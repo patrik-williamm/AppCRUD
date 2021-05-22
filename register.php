@@ -24,23 +24,23 @@ if (isset($_POST['submit'])) {
 	$user = register($_POST);
 	if ($user) {
 	    //Server settings
-	    $mail->isSMTP();                                            //Send using SMTP
-	    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-	    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-	    $mail->Username   = 'patrikwilliam001@gmail.com';                     //SMTP username
-	    $mail->Password   = 'dipanegara001';                               //SMTP password
+	    $mail->isSMTP();                                      //Send using SMTP
+	    $mail->Host       = 'smtp.gmail.com';                 //Set the SMTP server to send through
+	    $mail->SMTPAuth   = true;                             //Enable SMTP authentication
+	    $mail->Username   = 'pwappweb503@gmail.com';          //SMTP username
+	    $mail->Password   = 'patrikasa123';                   //SMTP password
 	    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
 	    $mail->Port       = 587;          
 
 	    //Recipients
-	    $mail->setFrom('patrikwilliam001@gmail.com', '000');
-	    $mail->addAddress('patrikwilliamm@gmail.com', 'pw-chan');     //Add a recipient
-	    $mail->addAddress('patrikwilliam001@gmail.com');               //Name is optional
+	    $mail->setFrom('pwappweb503@gmail.com', '000');
+	    $mail->addAddress($_POST['email'], $_POST['nama']);  						//Add a recipient
+	    $mail->addAddress($_POST['email']);           					//Name is optional
 
 	    //Content
-	    $mail->isHTML(true);                                  //Set email format to HTML
+	    $mail->isHTML(true);                                    //Set email format to HTML
 	    $mail->Subject = 'Registrasi Akun';
-	    $mail->Body    = random_bytes(6);
+	    $mail->Body    = hash('ripemd160', 'Akun');
 	    
 	    $mail->send();
 		header('location: index.php?status=sukses');

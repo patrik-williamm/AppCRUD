@@ -18,7 +18,7 @@ function view($sql) {
 function register($data) {
 	global $conn;
 
-	$id = htmlspecialchars($_POST['id']);
+	$id = htmlspecialchars($_POST['id_users']);
 	$nama = htmlspecialchars($_POST['nama']);
 	$email = stripcslashes($_POST['email']);
 	$tmp_lahir = htmlspecialchars($_POST['tmp_lahir']);
@@ -48,3 +48,5 @@ function register($data) {
 
 	return mysqli_affected_rows($conn);
 }
+
+
