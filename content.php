@@ -1,5 +1,5 @@
 <?php
-$page =isset($_GET['page']);
+$page = $_GET['page'];
 
 if ($page=='mata_pelajaran') {
   include 'modul/mata_pelajaran/mataPelajaran.php';
