@@ -1,16 +1,11 @@
 *{
 	font-family: 'Quicksand', sans-serif;
 }
-.jumbotron{
+/*.jumbotron{
 	width: 32em 15rem;
 	background-color: #a6aeba;
 	margin-top: 3em;
-}
-
-.img{
-	color: #5c849e;
-	opacity: 0.5;
-}
+}*/
 
 a{
  text-decoration: none;
@@ -29,7 +24,7 @@ a{
 }
 
 @media (min-width: 768px) {
-	.bd-placeholder-img-lg {
+	 .bd-placeholder-img-lg {
 	  font-size: 3.5rem;
 	}
 }
