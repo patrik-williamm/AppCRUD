@@ -7,9 +7,42 @@ if (isset($_SESSION['email'])) {
 if (!isset($_SESSION['email'])) {
 	header('location:');
 }
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'config/src/Exception.php';
+require 'config/src/PHPMailer.php';
+require 'config/src/SMTP.php';
+
+//Instantiation and passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
 if (isset($_POST['submit'])) {
 	$user = register($_POST);
 	if ($user) {
+	    //Server settings
+	    $mail->isSMTP();                                            //Send using SMTP
+	    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+	    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+	    $mail->Username   = 'patrikwilliam001@gmail.com';                     //SMTP username
+	    $mail->Password   = 'dipanegara001';                               //SMTP password
+	    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
+	    $mail->Port       = 587;          
+
+	    //Recipients
+	    $mail->setFrom('patrikwilliam001@gmail.com', '000');
+	    $mail->addAddress('patrikwilliamm@gmail.com', 'pw-chan');     //Add a recipient
+	    $mail->addAddress('patrikwilliam001@gmail.com');               //Name is optional
+
+	    //Content
+	    $mail->isHTML(true);                                  //Set email format to HTML
+	    $mail->Subject = 'Registrasi Akun';
+	    $mail->Body    = random_bytes(6);
+	    
+	    $mail->send();
 		header('location: index.php?status=sukses');
 	}else {
 		header('location: register.php?status=gagal');
