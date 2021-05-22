@@ -1,0 +1,21 @@
+*{
+	font-family: 'Quicksand', sans-serif;
+}
+.jumbotron{
+	width: 32em 15rem;
+	background-color: #a6aeba;
+	margin-top: 3em;
+}
+
+.img{
+	color: #5c849e;
+	opacity: 0.5;
+}
+
+a{
+ text-decoration: none;
+}
+
+.my-bg{
+	background-color: #c3d47b;
+}
