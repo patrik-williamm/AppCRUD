@@ -1,5 +1,6 @@
 <?php session_start();
 require_once 'config/Config.php';
+
 if (isset($_SESSION['email']) && isset($_SESSION['nama'])) {
 	header('location: admin.php');
 }
