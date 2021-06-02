@@ -1,19 +1,4 @@
 <?php
-// $page = $_GET['page'];
-
-// if ($page=='mata_pelajaran') {
-//   include 'modul/mata_pelajaran/mataPelajaran.php';
-// }
-// elseif ($page=='kelas') {
-// 	include 'modul/kelas/Kelas.php';
-// } 
-// elseif ($page=='guru') {
-// 	include 'modul/Guru/guru.php';
-// }
-// else{   
-// 	include 'modul/home/home.php';  
-// }
-
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
 
@@ -27,5 +12,5 @@ if (isset($_GET['page'])) {
 		require_once 'modul/home/home.php';  
 	}
 }else{
-	die("...");
+	require_once 'modul/home/home.php';  
 }
