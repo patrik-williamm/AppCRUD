@@ -64,5 +64,7 @@
         </div>
       </nav>
     <!-- akhir navbar -->
+
+    <div class="content">
     
   
