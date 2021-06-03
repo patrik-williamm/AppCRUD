@@ -15,6 +15,24 @@ function view($sql) {
 
 	return $data;
 }
+function tambahDataMP($data) {
+	global $conn;
+
+	$id_mp = htmlspecialchars($data['id_mp']);
+	$nama_mp = htmlspecialchars(rtrim($data['nama_mp']));
+	$jurusan_mp = htmlspecialchars($data['jurusan_mp']);
+
+	$cek = mysqli_query($conn, "SELECT nama_mp FROM mata_pelajaran");
+	mysqli_fetch_row($cek);
+	if (mysqli_fetch_assoc($cek) > 1) {
+		header('location: admin.php?page=mata_pelajaran&data=failed');
+		return false;
+	}else{
+		$result = mysqli_query($conn, "INSERT INTO mata_pelajaran VALUES ('$id_mp', '$nama_mp', '$jurusan_mp')");
+		return true;
+	}
+	return mysqli_affected_rows($conn);
+}
 function register($data) {
 	global $conn;
 
