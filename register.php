@@ -66,17 +66,24 @@ if (isset($_POST['submit'])) {
   </head>
   <body>
       <!-- navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white fixed-top">
-        <div class="container">
-           <a class="navbar-brand mx-2" href="?page=home">Patrik_Williamm</a>
-        </div>
-      </nav>
+     <nav class="navbar navbar-light bg-primary">
+	  <div class="container">
+	    <a class="navbar-brand" href="#">
+	      <img src="assets/img/logo_patrik.png" alt="" width="80" height="76" class="d-inline-block align-text-top">
+	      <ul class="navbar-nav">
+	      	<li class="nav-item">
+	      		<a class="btn btn-danger" aria-current="page" href="index.php">Sign in</a>
+	      	</li>
+	      </ul>
+	    </a>
+	  </div>
+</nav>
     <!-- akhir navbar -->
 <div class="container" style="margin-top: 5em">
 	<div class="row">
 		<div class="col-md-8 offset-md-2">
-			<h3 class="text-center">Registrasi Account</h3>
-			<hr class="bg-dark" style="width: 400px; margin: auto; display: block; height: 0.3em">
+			<h3 class="text-center mb-3">Registrasi Account</h3>
+			<hr class="bg-dark mb-5" style="width: 400px; margin: auto; display: block; height: 0.3em">
 		</div>
 		<form action="" method="post">
 			<input type="hidden" name="id">

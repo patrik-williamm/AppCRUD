@@ -5,7 +5,7 @@
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Selamat Datang <?= $_SESSION['nama'] ?></h1>
         <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-        <button class="btn btn-primary btn-lg" type="button">okereee</button>
+        <a class="btn btn-danger btn-lg" type="submit" href="logout.php">Logout</a>
       </div>
     </div>
   </div>

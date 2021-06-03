@@ -1,13 +1,12 @@
-
-if (isset($_POST['simpan'])) 
-{
+<?php //menanambah data baru
+if (isset($_POST['simpan'])) {
 	$data_mp = tambahDataMP($_POST);
 	
-	if ($data_mp) 
-	{
+	if ($data_mp) {
 		header('location: admin.php?page=mata_pelajaran&data=succes');
 	}
-} ?>
+} 
+?>
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">

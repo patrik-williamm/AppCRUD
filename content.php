@@ -14,9 +14,9 @@ if (isset($_GET['page'])) {
 	{
 		require_once 'modul/Guru/guru.php';
 	}
-	elseif ($data=='data_mp') 
+	elseif ($page=='new_mp') 
 	{
-		require_once 'modul/data.php';
+		require_once 'modul/mata_pelajaran/tambahData.php';
 	}
 	else 
 	{

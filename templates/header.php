@@ -56,9 +56,6 @@
                 <a class="nav-link active" href="?page=mata_pelajaran">Mata Pelajaran</a>
               </li>
               <hr class="bg-dark mb-0 p-0">
-              <li class="nav-item mx-4">
-                <a class="nav-link active btn btn-danger rounder" href="logout.php">Keluar</a>
-              </li>
             </ul>
           </div>
         </div>
