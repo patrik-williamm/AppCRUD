@@ -3,7 +3,7 @@ $conn = mysqli_connect('localhost', 'root', '', 'mydb');
 if (!$conn) {
 	die('connetion failed');
 }
-
+//function untuk menampilkan data
 function view($sql) {
 	global $conn;
 
@@ -15,6 +15,7 @@ function view($sql) {
 
 	return $data;
 }
+//function tambah data mata pelajaran
 function tambahDataMP($data) {
 	global $conn;
 
@@ -22,17 +23,21 @@ function tambahDataMP($data) {
 	$nama_mp = htmlspecialchars(rtrim($data['nama_mp']));
 	$jurusan_mp = htmlspecialchars($data['jurusan_mp']);
 
-	$cek = mysqli_query($conn, "SELECT nama_mp FROM mata_pelajaran");
-	mysqli_fetch_row($cek);
-	if (mysqli_fetch_assoc($cek) > 1) {
+	$cekMp = mysqli_query($conn, "SELECT nama_mp FROM mata_pelajaran WHERE nama_mp='$nama_mp'");
+	mysqli_fetch_row($cekMp);
+	if (mysqli_fetch_assoc($cekMp) > 1) 
+	{
 		header('location: admin.php?page=mata_pelajaran&data=failed');
 		return false;
-	}else{
-		$result = mysqli_query($conn, "INSERT INTO mata_pelajaran VALUES ('$id_mp', '$nama_mp', '$jurusan_mp')");
-		return true;
+	}
+	else
+	{
+		$result = mysqli_query($conn, "INSERT INTO mata_pelajaran VALUES ('$id_mp', '$nama_mp', '$jurusan_mp')");	
 	}
 	return mysqli_affected_rows($conn);
 }
+
+//function registerasi user
 function register($data) {
 	global $conn;
 
