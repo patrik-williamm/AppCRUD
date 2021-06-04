@@ -1,3 +1,12 @@
+<?php 
+if (isset($_POST['submit'])) {
+	$gurus = tambahDatagr($_POST);
+	if ($gurus) {
+		header('location:admin.php?page=guru&data=succes');
+	}
+}
+$guru_mp = view("SELECT nama_mp FROM mata_pelajaran ORDER BY nama_mp ASC");
+?>
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
@@ -29,14 +38,17 @@
 	        	</div>
 	        	<div class="col-md-4 offset-md-2 mb-3">
 	        		<label for="gr_study" class="form-label fw-bold">Guru Bidang Study</label>
-	        		<select class="form-select form-select-sm" aria-label=".form-select-sm example" id="gr_study">
+	        		<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="guru_study" id="gr_study">
 					  <option selected>Guru Bidang Study</option>
-					  <option value="1">One</option>
+					  <!-- php code -->
+					  <?php foreach($guru_mp as $mp): ?>
+						<option value="<?= $mp['nama_mp'] ?>"><?= $mp['nama_mp'] ?></option>
+					  <?php endforeach; ?>
 					</select>
 	        	</div>
 	        	<div class="col-md-4 offset-md-2 mb-3">
 	        		<label class="form-label fw-bold" for="Status">Status Guru</label>
-	        		<select class="form-select form-select-sm" aria-label=".form-select-sm example" id="Status">
+	        		<select class="form-select form-select-sm" aria-label=".form-select-sm example" id="Status" name="status_guru">
 					  <option selected>Status Guru</option>
 					  <option value="PNS">PNS</option>
 					  <option value="Honor">Honor</option>
