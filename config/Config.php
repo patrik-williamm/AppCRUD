@@ -15,19 +15,38 @@ function view($sql) {
 
 	return $data;
 }
+//function tambah data kelas
+function tambahDatakls($data) {
+	global $conn;
+
+	$id_kelas = htmlspecialchars($data['id_kelas']);
+	$nama_walikls = htmlspecialchars($data['nama_walikls']);
+	$jlh_siswa = htmlspecialchars($data['jlh_siswa']);
+	$nama_kls = htmlspecialchars($data['nama_kls']);
+
+	$cek = mysqli_query($conn, "SELECT nama_kls FROM kelas WHERE nama_kls='$nama_kls' ");
+	mysqli_fetch_row($cek);
+	if (mysqli_fetch_assoc($cek) > 1) {
+		header('location: admin.php?page=kelas&data=failed');
+		return false;
+	}
+	// if (empty($kelas)) {
+	// 	header('location: admin.php?page=kelas&data=failed');
+	// 	return false;
+	// }
+
+	$result = mysqli_query($conn, "INSERT INTO kelas VALUES ( '$id_kelas', '$nama_walikls', '$jlh_siswa', '$nama_kls' )");
+
+	return mysqli_affected_rows($conn);
+}
 //function tambah data mata pelajaran
 function tambahDataMP($data) {
 	global $conn;
 
 	$id_mp = htmlspecialchars($data['id_mp']);
-	$nama_mp = htmlspecialchars(rtrim($data['nama_mp']));
-	$jurusan_mp = htmlspecialchars($data['jurusan_mp']);
+	$nama_mp = htmlspecialchars(rtrim(ucwords($data['nama_mp'])));
+	$jurusan_mp = htmlspecialchars(strtoupper($data['jurusan_mp']));
 
-	//cek apakah semua data telah diisi
-	if (empty($nama_mp) && empty($jurusan_mp)) {
-		header('location: admin.php?page=mata_pelajaran&data=failed');
-		return false;
-	}
 
 	$cekMp = mysqli_query($conn, "SELECT nama_mp FROM mata_pelajaran WHERE nama_mp='$nama_mp'");
 	mysqli_fetch_row($cekMp);
@@ -36,10 +55,12 @@ function tambahDataMP($data) {
 		header('location: admin.php?page=mata_pelajaran&data=failed');
 		return false;
 	}
-	else
-	{
-		$result = mysqli_query($conn, "INSERT INTO mata_pelajaran VALUES ('$id_mp', '$nama_mp', '$jurusan_mp')");	
+	//cek apakah semua data telah diisi
+	if (empty($nama_mp) && empty($jurusan_mp)) {
+		header('location: admin.php?page=mata_pelajaran&data=failed');
+		return false;
 	}
+	$result = mysqli_query($conn, "INSERT INTO mata_pelajaran VALUES ('$id_mp', '$nama_mp', '$jurusan_mp')");	
 	return mysqli_affected_rows($conn);
 }
 

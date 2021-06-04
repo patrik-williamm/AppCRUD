@@ -38,12 +38,15 @@
       <!-- navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white fixed-top">
         <div class="container">
-           <a class="navbar-brand mx-2" href="" target="_blank">Patrik_Williamm</a>
+           <a class="navbar-brand mx-2" href="admin.php?<?php unset($page) ?>">Patrik_Williamm</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="?page=siswa">Siswa</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link active" href="?page=kelas">kelas</a>
               </li>

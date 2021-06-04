@@ -65,102 +65,76 @@ if (isset($_POST['submit'])) {
     <title>Yo! Patrik william</title>
   </head>
   <body>
-      <!-- navbar -->
-     <nav class="navbar navbar-light bg-primary">
-	  <div class="container">
-	    <a class="navbar-brand" href="#">
-	      <img src="assets/img/logo_patrik.png" alt="" width="80" height="76" class="d-inline-block align-text-top">
-	      <ul class="navbar-nav">
-	      	<li class="nav-item">
-	      		<a class="btn btn-danger" aria-current="page" href="index.php">Sign in</a>
-	      	</li>
-	      </ul>
-	    </a>
-	  </div>
-</nav>
-    <!-- akhir navbar -->
-<div class="container" style="margin-top: 5em">
-	<div class="row">
-		<div class="col-md-8 offset-md-2">
-			<h3 class="text-center mb-3">Registrasi Account</h3>
-			<hr class="bg-dark mb-5" style="width: 400px; margin: auto; display: block; height: 0.3em">
-		</div>
-		<form action="" method="post">
-			<input type="hidden" name="id">
+	<div class="container" style="margin-top: 2em">
+		<div class="row">
 			<div class="col-md-8 offset-md-2">
-				<div class="mb-3">
-				  <label for="nama" class="form-label">Nama Lengkap</label>
-				  <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Lengkap">
-				</div>
+				<h3 class="text-center mb-3">Registrasi Account</h3>
+				<hr class="bg-primary mb-5" style="width: 300px; margin: auto; display: block; height: 0.3em">
 			</div>
-			<div class="col-md-8 offset-md-2">
-				<div class="mb-3">
-				  <label for="email" class="form-label">Email</label>
-				  <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
-				</div>
+			<form action="" method="post">
+				<input type="hidden" name="id">
+					<div class="col-md-8 offset-md-2">
+						<div class="mb-3">
+						  <label for="nama" class="form-label fw-bold">Nama Lengkap</label>
+						  <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Lengkap">
+						</div>
+					</div>
+					<div class="col-md-8 offset-md-2">
+						<div class="mb-3">
+						  <label for="email" class="form-label fw-bold">Email</label>
+						  <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+						</div>
+					</div>
+					<div class="row g-2 needs-validation mb-3">
+						<div class="col-md-4 offset-md-2">
+						   <label for="tmpLahir" class="form-label fw-bold">Tempat lahir</label>
+						   <input type="text" name="tmp_lahir" class="form-control" id="tmpLahir">	
+						</div>
+						<div class="col-md-4">
+						   <label for="tgllahir" class="form-label fw-bold">Tanggal Lahir</label>
+						   <input type="date" name="tgl_lahir" class="form-control" id="tgllahir">
+						</div>
+					</div>
+					<div class="row g-2 needs-validation mb-3">
+						<div class="col-md-4 offset-md-2 fw-bold">
+						   <label for="tmpLahir" class="form-label">Gender</label>
+						   <select class="form-select" name="gender" aria-label="Default select example">
+						   	  <option>Gender Option</option>
+							  <option value="L">Laki-laki</option>
+							  <option value="P">Perempuan</option>
+							</select>
+						</div>
+						<div class="col-md-4">
+						   <label for="address" class="form-label fw-bold">Alamat</label>
+						   <input type="text" name="alamat" class="form-control" id="address">
+						</div>
+					</div>
+					<div class="col-md-8 offset-md-2">
+						<div class="mb-3">
+						  <label for="password" class="form-label fw-bold">Password</label>
+						  <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+						</div>
+					</div>
+					<div class="col-md-8 offset-md-2">
+						<div class="mb-3">
+						  <label for="konfirmasiPassword" class="form-label fw-bold">Konfirmasi Password</label>
+						  <input type="password" name="konfirmasiPassword" class="form-control" id="konfirmasiPassword" placeholder="konfirmasi Password">
+						</div>
+					</div>
+					<div class="col-md-8 offset-md-2">
+						<button type="submit" name="submit" class="btn btn-primary my-3">Submit</button> |
+						<button type="reset" name="batal" class="btn btn-danger my-3">Batal!</button>
+					</div>
+				</form>
 			</div>
-			<div class="row g-2 needs-validation mb-3">
-				<div class="col-md-4 offset-md-2">
-				   <label for="tmpLahir" class="form-label">Tempat lahir</label>
-				   <input type="text" name="tmp_lahir" class="form-control" id="tmpLahir">	
-				</div>
-				<div class="col-md-4">
-				   <label for="tgllahir" class="form-label">Tanggal Lahir</label>
-				   <input type="date" name="tgl_lahir" class="form-control" id="tgllahir">
-				</div>
-			</div>
-			<div class="row g-2 needs-validation mb-3">
-				<div class="col-md-4 offset-md-2">
-				   <label for="tmpLahir" class="form-label">Gender</label>
-				   <select class="form-select" name="gender" aria-label="Default select example">
-				   	  <option>Gender Option</option>
-					  <option value="L">Laki-laki</option>
-					  <option value="P">Perempuan</option>
-					</select>
-				</div>
-				<div class="col-md-4">
-				   <label for="address" class="form-label">Alamat</label>
-				   <input type="text" name="alamat" class="form-control" id="address">
-				</div>
-			</div>
-			<div class="col-md-8 offset-md-2">
-				<div class="mb-3">
-				  <label for="password" class="form-label">Password</label>
-				  <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-				</div>
-			</div>
-			<div class="col-md-8 offset-md-2">
-				<div class="mb-3">
-				  <label for="konfirmasiPassword" class="form-label">Konfirmasi Password</label>
-				  <input type="password" name="konfirmasiPassword" class="form-control" id="konfirmasiPassword" placeholder="konfirmasi Password">
-				</div>
-			</div>
-			<div class="col-md-8 offset-md-2">
-				<button type="submit" name="submit" class="btn btn-primary my-3">Submit</button>
-				<button type="reset" name="batal" class="btn btn-danger my-3">Batal!</button>
-			</div>
-		</form>
-	</div>
-</div> <!-- footer -->
-    <div class="row bg-dark text-white">
-      <div class="container">
-       
-      </div>
-    </div>
-    <!-- akhir footer -->
-
-    <!-- javascript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  </body>
-</html>
-
- <!-- footer -->
-    <div class="row bg-dark text-white">
-      <div class="container">
-       
-      </div>
-    </div>
-    <!-- akhir footer -->
+		</div> 
+		<!-- footer -->
+	    <div class="container py-4">
+		    <footer class="pt-3 mt-4 text-muted border-top">
+		      &copy; 2021-<?= date('Y')?> | Patrik William
+		    </footer>
+		  </div>
+	    <!-- akhir footer -->
 
     <!-- javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
