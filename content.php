@@ -17,6 +17,8 @@ if (isset($_GET['page'])) {
 	elseif ($page=='new_mp') 
 	{
 		require_once 'modul/mata_pelajaran/tambahData.php';
+	}elseif ($page == 'new_gr') {
+		require_once 'modul/Guru/tambahDatagr.php';
 	}
 	else 
 	{
