@@ -37,6 +37,30 @@ function tambahDataMP($data) {
 	return mysqli_affected_rows($conn);
 }
 
+//function tambah data guru
+function tambahDatagr($data) {
+	global $conn;
+
+	$id_guru = htmlspecialchars($data['id_guru']);
+	$nama_guru = htmlspecialchars($data['nama_guru']);
+	$nip = htmlspecialchars(trim($data['nip']));
+	$alamat = htmlspecialchars($data['alamat']);
+	$email = htmlspecialchars(trim(stripcslashes($data['email'])));
+	$guru_study =htmlspecialchars($data['guru_study']);
+	$status_guru = htmlspecialchars($data['status_guru']);
+
+	$cek1 = mysqli_query($conn, "SELECT nama_guru, nip, email FROM guru WHERE nip=$nip");
+	mysqli_fetch_row($cek1);
+	if (mysqli_fetch_assoc($cek1)) {
+		header('location : admin.php?page=guru&data=failed');
+		return false;
+	}else{
+		$result = mysqli_query($conn, "INSERT INTO guru VALUES ( '$id_guru', '$nama_guru', '$nip', '$alamat', '$email', 'guru_study', '$status_guru' )");
+	}
+
+	return mysqli_affected_rows($conn);
+}
+
 //function registerasi user
 function register($data) {
 	global $conn;
