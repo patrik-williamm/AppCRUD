@@ -23,6 +23,12 @@ function tambahDataMP($data) {
 	$nama_mp = htmlspecialchars(rtrim($data['nama_mp']));
 	$jurusan_mp = htmlspecialchars($data['jurusan_mp']);
 
+	//cek apakah semua data telah diisi
+	if (empty($nama_mp) && empty($jurusan_mp)) {
+		header('location: admin.php?page=mata_pelajaran&data=failed');
+		return false;
+	}
+
 	$cekMp = mysqli_query($conn, "SELECT nama_mp FROM mata_pelajaran WHERE nama_mp='$nama_mp'");
 	mysqli_fetch_row($cekMp);
 	if (mysqli_fetch_assoc($cekMp) > 1) 
@@ -49,13 +55,19 @@ function tambahDatagr($data) {
 	$guru_study =htmlspecialchars($data['guru_study']);
 	$status_guru = htmlspecialchars($data['status_guru']);
 
-	$cek1 = mysqli_query($conn, "SELECT nama_guru, nip, email FROM guru WHERE nip=$nip");
+	//cek data yang di input
+	if (empty($nama_guru) && empty($nip) && empty($email)) {
+		header('location: admin.php?page=guru&data=failed');
+		return false;
+	}
+
+	$cek1 = mysqli_query($conn, "SELECT nip FROM guru WHERE nip='$nip'");
 	mysqli_fetch_row($cek1);
-	if (mysqli_fetch_assoc($cek1)) {
+	if (mysqli_fetch_assoc($cek1) > 1) {
 		header('location : admin.php?page=guru&data=failed');
 		return false;
 	}else{
-		$result = mysqli_query($conn, "INSERT INTO guru VALUES ( '$id_guru', '$nama_guru', '$nip', '$alamat', '$email', 'guru_study', '$status_guru' )");
+		$result = mysqli_query($conn, "INSERT INTO guru VALUES ( '$id_guru', '$nama_guru', '$nip', '$alamat', '$email', '$guru_study', '$status_guru' )");
 	}
 
 	return mysqli_affected_rows($conn);
