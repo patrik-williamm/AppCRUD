@@ -2,6 +2,7 @@
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
+      <a class="btn btn-primary mb-3 mt-2" href="?page=new_gr">Guru baru</a>
       <table class="table table-striped container ">
         <tr class="table-primary">
           <th class="table-primary">ID</th>
