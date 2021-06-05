@@ -28,3 +28,10 @@ a{
 	  font-size: 3.5rem;
 	}
 }
+
+@media (max-width: 768px) {
+	.table{
+		font-size: 12px;
+
+	}
+}

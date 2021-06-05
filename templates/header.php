@@ -9,9 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
     <!-- My css -->
-    <!-- <link href="../assets/css/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="http://localhost/PwWebApp/assets/css/style.css">
+    <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
@@ -47,6 +48,7 @@
               <li class="nav-item">
                 <a class="nav-link active" href="?page=siswa">Siswa</a>
               </li>
+              <hr class="bg-dark mb-0 p-0">
               <li class="nav-item">
                 <a class="nav-link active" href="?page=kelas">kelas</a>
               </li>
@@ -64,7 +66,5 @@
         </div>
       </nav>
     <!-- akhir navbar -->
-
-    <div class="content">
     
   
