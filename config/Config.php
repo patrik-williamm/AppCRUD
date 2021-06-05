@@ -3,6 +3,9 @@ $conn = mysqli_connect('localhost', 'root', '', 'mydb');
 if (!$conn) {
 	die('connetion failed');
 }
+
+define('BASEURL', 'http://localhost/PwWebApp');
+
 //function untuk menampilkan data
 function view($sql) {
 	global $conn;
