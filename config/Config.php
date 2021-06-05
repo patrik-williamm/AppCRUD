@@ -97,6 +97,9 @@ function tambahDatagr($data) {
 	return mysqli_affected_rows($conn);
 }
 
+function tambahDatass($data) {
+}
+
 //function registerasi user
 function register($data) {
 	global $conn;
