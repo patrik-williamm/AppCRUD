@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="<?= BASEURL ?>/assets/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
     <!-- My css -->
-    <link rel="stylesheet" href="http://localhost/PwWebApp/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/assets/css/style.css">
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
@@ -33,13 +33,13 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Yo! Patrik william</title>
+    <title>Yo! Patrik william | <?= $_GET['page'] ?></title>
   </head>
   <body>
       <!-- navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white fixed-top">
         <div class="container">
-           <a class="navbar-brand mx-2" href="admin.php?<?php unset($page) ?>">Patrik_Williamm</a>
+           <a class="navbar-brand mx-2" href="?page=Dashboard">Patrik_Williamm</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

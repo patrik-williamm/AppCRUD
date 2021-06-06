@@ -33,10 +33,6 @@ function tambahDatakls($data) {
 		header('location: admin.php?page=kelas&data=failed');
 		return false;
 	}
-	// if (empty($kelas)) {
-	// 	header('location: admin.php?page=kelas&data=failed');
-	// 	return false;
-	// }
 
 	$result = mysqli_query($conn, "INSERT INTO kelas VALUES ( '$id_kelas', '$nama_walikls', '$jlh_siswa', '$nama_kls' )");
 
@@ -93,6 +89,26 @@ function tambahDatagr($data) {
 	}else{
 		$result = mysqli_query($conn, "INSERT INTO guru VALUES ( '$id_guru', '$nama_guru', '$nip', '$alamat', '$email', '$guru_study', '$status_guru' )");
 	}
+
+	return mysqli_affected_rows($conn);
+}
+//tambah data siswa
+function tambahDatass($data) {
+	global $conn;
+
+	$id_siswa = htmlspecialchars($data['id_siswa']);
+	$nama_siswa = htmlspecialchars($data['nama_siswa']);
+	$nis = htmlspecialchars($data['nis']);
+	$kelas = htmlspecialchars($data['kelas']);
+
+	$cek = mysqli_query($conn, "SELECT nama_siswa, nis FROM siswa WHERE nama_siswa='$nama_siswa' and nis='$nis' ");
+	mysqli_fetch_row($cek);
+	if (mysqli_fetch_assoc($cek) > 1) {
+		header('location: admin.php?page=siswa&data=failed');
+		return false;
+	}
+
+	$result = mysqli_query($conn, "INSERT INTO siswa VALUES ( '', '$nama_siswa', '$nis', '$kelas' )");
 
 	return mysqli_affected_rows($conn);
 }
