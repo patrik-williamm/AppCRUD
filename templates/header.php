@@ -33,13 +33,13 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Yo! Patrik william</title>
+    <title>Yo! Patrik william | <?= $_GET['page'] ?></title>
   </head>
   <body>
       <!-- navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white fixed-top">
         <div class="container">
-           <a class="navbar-brand mx-2" href="admin.php?<?php unset($page) ?>">Patrik_Williamm</a>
+           <a class="navbar-brand mx-2" href="?page=Dashboard">Patrik_Williamm</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

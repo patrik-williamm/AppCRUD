@@ -2,10 +2,12 @@
 require_once 'config/Config.php'; 
 if (isset($_SESSION['email'])) {
 	header('location: admin.php');
+	die("access denied");
 }
 
 if (!isset($_SESSION['email'])) {
-	header('location:');
+	header('location: index,php');
+	die('access denied');
 }
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function

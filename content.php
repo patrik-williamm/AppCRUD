@@ -27,9 +27,9 @@ if (isset($_GET['page'])) {
 		require_once 'modul/siswa/tambahDatasw.php';
 
 	} else {
-		require_once 'modul/home/home.php';
+		require_once 'modul/index.php';
 
 	}
 }else {
-	require_once 'modul/home/home.php';  
+	require_once 'modul/index.php';  
 }

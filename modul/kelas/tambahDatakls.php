@@ -6,8 +6,7 @@ if (isset($_POST['submit'])) {
 		header('location: admin.php?page=kelas&data=succes');
 	}
 }
-
-$v_kls = view("SELECT nama_guru FROM guru ORDER BY nama_guru ASC");
+$v_kls = view("SELECT nama_guru FROM guru");
 ?>
 <main>
   <div class="container py-4">
@@ -20,7 +19,7 @@ $v_kls = view("SELECT nama_guru FROM guru ORDER BY nama_guru ASC");
       		</div>	
 	        <form action="" method="post">
 	        	<div class="col-md-8 offset-md-2 mb-3">
-	        		<input class="form-control" type="hidden" aria-label="Disabled input example" disabled name="id_kelas">
+	        		<input class="form-control" type="hidden" name="id_kelas">
 	        	</div>
 	        	<div class="col-md-8 offset-md-2 mb-3">
 	        		<label class="form-label fw-bold" for="wl_kls">Wali Kelas</label>
