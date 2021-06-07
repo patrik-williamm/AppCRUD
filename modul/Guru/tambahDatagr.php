@@ -18,7 +18,7 @@ $guru_mp = view("SELECT nama_mp FROM mata_pelajaran ORDER BY nama_mp ASC");
       		</div>	
 	        <form action="" method="post">
 	        	<div class="col-md-8 offset-md-2 mb-3">
-	        		<input class="form-control" type="hidden" aria-label="Disabled input example" disabled name="id_guru">
+	        		<input class="form-control" type="hidden" aria-label="Disabled input example" name="id_guru">
 	        	</div>
 	        	<div class="col-md-8 offset-md-2 mb-3">
 	        		<label class="form-label fw-bold" for="nama">Nama Guru</label>

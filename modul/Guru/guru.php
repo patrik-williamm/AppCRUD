@@ -46,8 +46,8 @@
           <td class="table-light"><?= $guru['guru_mp'] ?></td>
           <td class="table-light"><?= $guru['status'] ?></td>
           <td class="table-light">
-            <a href="?edit=<?= $guru['id_guru'] ?>">Edit</a> |
-            <a href="?hapus=<?= $guru['id_guru'] ?>">Hapus</a>
+            <a href="?page=edit_gr&edit=<?= $guru['id_guru'] ?>">Edit</a> |
+            <a href="?page=delete_gr&delete=<?= $guru['id_guru'] ?>">Hapus</a>
           </td>
         </tr>
         <?php $id++; ?>

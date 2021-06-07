@@ -4,6 +4,7 @@ if (!$conn) {
 	die('connetion failed');
 }
 
+//constant url
 define('BASEURL', 'http://localhost/PwWebApp');
 
 //function untuk menampilkan data
@@ -75,12 +76,6 @@ function tambahDatagr($data) {
 	$guru_study =htmlspecialchars($data['guru_study']);
 	$status_guru = htmlspecialchars($data['status_guru']);
 
-	//cek data yang di input
-	if (empty($nama_guru) && empty($nip) && empty($email)) {
-		header('location: admin.php?page=guru&data=failed');
-		return false;
-	}
-
 	$cek1 = mysqli_query($conn, "SELECT nip FROM guru WHERE nip='$nip'");
 	mysqli_fetch_row($cek1);
 	if (mysqli_fetch_assoc($cek1) > 1) {
@@ -110,6 +105,41 @@ function tambahDatass($data) {
 
 	$result = mysqli_query($conn, "INSERT INTO siswa VALUES ( '', '$nama_siswa', '$nis', '$kelas' )");
 
+	return mysqli_affected_rows($conn);
+}
+//edit matapelajaran
+function editmp($data) {
+	global $conn;
+
+	$id_mp = htmlspecialchars($data['id_mp']);
+	$nama_mp = htmlspecialchars($data['nama_mp']);
+	$jurusan_mp = htmlspecialchars($data['jurusan_mp']);
+
+	$result = mysqli_query($conn, "UPDATE mata_pelajaran SET id_mp='$id_mp', nama_mp='$nama_mp', jurusan_mp='$jurusan_mp' WHERE id_mp='$id_mp' ");
+	return mysqli_affected_rows($conn);
+}
+
+//hapus data dari query
+function hapusdata($id) {
+	global $conn;
+	$result = mysqli_query($conn, "DELETE FROM mata_pelajaran WHERE id_mp='$id'");
+	return mysqli_affected_rows($conn);
+}
+
+function hapusdatakls($id) {
+	global $conn;
+	$result = mysqli_query($conn, "DELETE FROM kelas WHERE id_kelas='$id'");
+	return mysqli_affected_rows($conn);
+}
+
+function hapusdatagr($id) {
+	global $conn;
+	$result = mysqli_query($conn, "DELETE FROM guru WHERE id_guru='$id'");
+	return mysqli_affected_rows($conn);
+}
+function hapusdataklssw($id) {
+	global $conn;
+	$result = mysqli_query($conn, "DELETE FROM siswa WHERE id_siswa='$id'");
 	return mysqli_affected_rows($conn);
 }
 

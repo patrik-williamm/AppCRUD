@@ -42,8 +42,8 @@
       		<td class="table-light"><?= $ss['nis'] ?></td>
       		<td class="table-light"><?= $ss['kelas_siswa'] ?></td>
       		<td class="table-light">
-      			<a href="?edit=<?= $ss['id_siswa'] ?>">Edit</a> |
-      			<a href="?delete=<?= $ss['id_siswa'] ?>">Hapus</a>
+      			<a href="?page=edit_sw&edit=<?= $ss['id_siswa'] ?>">Edit</a> |
+      			<a href="?page=delete_sw&delete=<?= $ss['id_siswa'] ?>">Hapus</a>
       		</td>
       	</tr>
         <?php $id++; ?>

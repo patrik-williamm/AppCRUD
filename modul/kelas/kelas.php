@@ -42,8 +42,8 @@
 				<td class="table-light"><?= $kls['jlh_siswa'] ?></td>
 				<td class="table-light"><?= $kls['nama_kls'] ?></td>
 				<td class="table-light">
-					<a href="?edit=<?= $kls['id_kelas'] ?>">Edit</a> | 
-					<a href="?hapus=<?= $kls['id_kelas'] ?>">Hapus</a>
+					<a href="?page=edit_kls&edit=<?= $kls['id_kelas'] ?>">Edit</a> | 
+					<a href="?page=delete_kls&delete=<?= $kls['id_kelas'] ?>">Hapus</a>
 				</td>
 			</tr>
 			<?php $i++; ?>	

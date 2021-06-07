@@ -1,6 +1,6 @@
 <?php
-//menampilkan data matapelajaran
-$matapelajaran = view("SELECT * FROM mata_pelajaran ORDER BY nama_mp DESC");
+  //menampilkan data matapelajaran
+  $matapelajaran = view("SELECT * FROM mata_pelajaran ORDER BY nama_mp DESC");
 ?>
 <main>
   <div class="container py-4">
@@ -42,8 +42,8 @@ $matapelajaran = view("SELECT * FROM mata_pelajaran ORDER BY nama_mp DESC");
           <td class="table-light"><?= $mp['nama_mp'] ?></td>
           <td class="table-light"><?= $mp['jurusan_mp'] ?></td>
            <td class="table-light">
-            <a href="?edit=<?= hash("sha256", $mp['id_mp']) ?>">Edit</a> | 
-            <a href="?delete=<?= $mp['id_mp'] ?>">Hapus</a>
+            <a href="?page=edit_mp&edit=<?=$mp['id_mp']; ?>">Edit</a> | 
+            <a href="?page=delete_mp&delete=<?= $mp['id_mp'] ?>">Hapus</a>
           </td>
         </tr>
         <?php $id++; ?>
