@@ -39,7 +39,7 @@ if (isset($_GET['page'])) {
 			require_once 'modul/Guru/hapusgr.php';
 			break;
 		case 'delete_sw':
-			require_once 'modul/siswa/hapussw.php';
+			require_once 'modul/siswa/hapusw.php';
 			break;
 		default:
 			require_once 'modul/index.php';
