@@ -1,6 +1,19 @@
 <?php session_start();
 require_once 'config/Config.php';
 
+if (isset($_COOKIE["keyid"]) && isset($_COOKIE["key"])) {
+  $keyid = $_COOKIE["keyid"];
+  $key = $_COOKIE["key"];
+
+  if ($keyid=$_POST['id']) {
+    if ($key= hash("haval160,4",$dt['nama'])) {
+      $_SESSION['submit'] = true;
+    }
+    header('location:index.php');
+  }
+  header('location:index.php');
+}
+
 if (isset($_SESSION['email']) && isset($_SESSION['nama'])) {
 	header('location: admin.php');
 }
@@ -13,9 +26,16 @@ if (isset($_POST['submit'])) {
 	mysqli_num_rows($emailUser);
 	if ($dt = mysqli_fetch_assoc($emailUser)) {
 		if (password_verify($password, $dt['password'])) {
+      $_SESSION['submit'] = true;
 			$_SESSION['email'] = $dt['email'];
       $_SESSION['nama'] = $dt['nama'];
-      setcookie("key", hash("haval160,4",$dt['nama']), time()+3600);
+      $dt['email'] = true;
+      $dt['nama'] = true;
+      //setcookie id dan nama dari user
+      if (isset($_POST['remember'])) {
+        setcookie("keyid", $dt['id'], time()+360000);
+        setcookie("setkey", hash("haval160,4",$dt['nama']), time()+360000);  
+      }
 			header('location: admin.php?page=Dashboard');
 		}
 	}
@@ -75,8 +95,7 @@ if (isset($_POST['submit'])) {
           <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="off">
           <label for="floatingPassword">Password</label>
         </div>
-
-        <div class="checkbox mb-2">
+        <div class="checkbox mb-2 col-md-8 ms-0">
           <label class="me-5">
             <input type="checkbox" name="remember" value="remember-me"> Remember me
           </label>

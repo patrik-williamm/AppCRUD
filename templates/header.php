@@ -33,11 +33,12 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Yo! Patrik william | <?= $_GET['page'] ?></title>
+    <?php $title = empty($_GET['page']) ? 'Dashboard': $_GET['page'] ?>
+    <title>Yo! Patrik william | <?= $title ?> </title>
   </head>
   <body>
       <!-- navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white fixed-top shadow-sm">
         <div class="container">
            <a class="navbar-brand mx-2" href="?page=Dashboard">Patrik_Williamm</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +61,7 @@
               <li class="nav-item">
                 <a class="nav-link active" href="?page=mata_pelajaran">Mata Pelajaran</a>
               </li>
-              <hr class="bg-dark mb-0 p-0">
+              <hr class="bg-primary mb-0">
             </ul>
           </div>
         </div>
