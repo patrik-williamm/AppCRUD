@@ -190,12 +190,9 @@ function register($data) {
 	$id = htmlspecialchars($_POST['id']);
 	$nama = htmlspecialchars($_POST['nama']);
 	$email = stripcslashes($_POST['email']);
-	$tmp_lahir = htmlspecialchars($_POST['tmp_lahir']);
-	$tgl_lahir = htmlspecialchars($_POST['tgl_lahir']);
-	$gender = htmlspecialchars($_POST['gender']);
-	$alamat = htmlspecialchars($_POST['alamat']);
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
 	$konfirmasiPassword = mysqli_real_escape_string($conn, $_POST['konfirmasiPassword']);
+	$status = htmlspecialchars($_POST['status']);
 
 	$emailUser = mysqli_query($conn, "SELECT email FROM users WHERE email='$email'");
 	
@@ -213,7 +210,7 @@ function register($data) {
 
 	//generate password
 	$password = password_hash($password, PASSWORD_DEFAULT);
-	$result = mysqli_query($conn, "INSERT INTO users VALUES( '', '$nama', '$email', '$tmp_lahir', '$tgl_lahir', '$gender', '$alamat', '$password' )");
+	$result = mysqli_query($conn, "INSERT INTO users VALUES( '', '$nama', '$email', '$password', 'user' )");
 
 	return mysqli_affected_rows($conn);
 }

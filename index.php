@@ -15,7 +15,7 @@ if (isset($_COOKIE["keyid"]) && isset($_COOKIE["key"])) {
 }
 
 if (isset($_SESSION['email']) && isset($_SESSION['nama'])) {
-	header('location: admin.php');
+	header('location: modul/admin/index.php');
 }
 if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
@@ -29,14 +29,20 @@ if (isset($_POST['submit'])) {
       $_SESSION['submit'] = true;
 			$_SESSION['email'] = $dt['email'];
       $_SESSION['nama'] = $dt['nama'];
-      $dt['email'] = true;
-      $dt['nama'] = true;
+      $_SESSION['status'] = $dt['status'];
       //setcookie id dan nama dari user
       if (isset($_POST['remember'])) {
         setcookie("keyid", $dt['id'], time()+360000);
         setcookie("setkey", hash("haval160,4",$dt['nama']), time()+360000);  
       }
-			header('location: admin.php?page=Dashboard');
+
+      if ($_SESSION['status']=='admin') {
+			 header('location: modul/admin/index.php');
+       exit; 
+      }elseif ($_SESSION['status']=='user') {
+        header('location: modul/siswa/index.php');
+        exit;
+      }
 		}
 	}
   $error=true;
@@ -54,7 +60,7 @@ if (isset($_POST['submit'])) {
     <!-- Bootstrap core CSS -->
     <link href="<?= BASEURL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="assets\css\signin.css" rel="stylesheet">
+    <link href="<?= BASEURL ?>/assets/css/signin.css" rel="stylesheet">
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="<?= BASEURL ?>/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="<?= BASEURL ?>/favicon/apple-icon-60x60.png">
@@ -69,7 +75,7 @@ if (isset($_POST['submit'])) {
     <link rel="icon" type="image/png" sizes="32x32" href="<?= BASEURL ?>/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="<?= BASEURL ?>/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= BASEURL ?>/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/<?= BASEURL ?>/favicon/manifest.json">
+    <link rel="manifest" href="<?= BASEURL ?>/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
