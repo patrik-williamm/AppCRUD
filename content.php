@@ -29,6 +29,15 @@ if (isset($_GET['page'])) {
 		case 'edit_mp':
 			require_once 'modul/mata_pelajaran/editmp.php';
 			break;
+		case 'edit_gr':
+			require_once 'modul/Guru/editgr.php';
+			break;
+		case 'edit_kls':
+			require_once 'modul/kelas/editkls.php';
+			break;
+		case 'edit_sw':
+			require_once 'modul/siswa/editsw.php';
+			break;
 		case 'delete_mp':
 			require_once 'modul/mata_pelajaran/hapusmp.php';
 			break;

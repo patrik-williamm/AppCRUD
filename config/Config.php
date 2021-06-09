@@ -119,6 +119,46 @@ function editmp($data) {
 	return mysqli_affected_rows($conn);
 }
 
+function editgr($data) {
+	global $conn;
+
+	$id_guru = htmlspecialchars($data['id_guru']);
+	$nama_guru = htmlspecialchars($data['nama_guru']);
+	$nip = htmlspecialchars($data['nip']);
+	$alamat = htmlspecialchars($data['alamat']);
+	$email = stripslashes($data['email']);
+	$guru_mp = htmlspecialchars($data['guru_mp']);
+	$status = htmlspecialchars($data['status']);
+
+	$result = mysqli_query($conn, "UPDATE guru SET id_guru='$id_guru', nama_guru='$nama_guru', nip='$nip', alamat='$alamat', email='$email',guru_mp='$guru_mp', status='$status' WHERE id_guru='$id_guru' ");
+	return mysqli_affected_rows($conn);
+}
+
+function editsw($data) {
+	global $conn;
+
+	$id_siswa = htmlspecialchars($data['id_siswa']);
+	$nama_siswa = htmlspecialchars($data['nama_siswa']);
+	$nis = htmlspecialchars($data['nis']);
+	$kelas_siswa = htmlspecialchars($data['kelas_siswa']);	
+
+	$result = mysqli_query($conn, "UPDATE siswa SET id_siswa='$id_siswa', nama_siswa='$nama_siswa', nis='$nis', kelas_siswa='$kelas_siswa' WHERE id_siswa='$id_siswa'");
+	return mysqli_affected_rows($conn);	
+}
+
+function editkls($data) {
+	global $conn;
+
+	$id_kelas = htmlspecialchars($data['id_kelas']);
+	$nama_Walikls = htmlspecialchars($data['nama_Walikls']);
+	$jlh_siswa = htmlspecialchars($data['jlh_siswa']);
+	$nama_kls = htmlspecialchars($data['nama_kls']);
+
+	$result = mysqli_query($conn, "UPDATE kelas SET id_kelas='', nama_Walikls='$nama_Walikls', jlh_siswa='$jlh_siswa', nama_kls='$nama_kls' WHERE id_kelas='$id_kelas'");
+
+	return mysqli_affected_rows($conn);
+}
+
 //hapus data dari query
 function hapusdata($id) {
 	global $conn;
@@ -143,7 +183,7 @@ function hapusdataklssw($id) {
 	return mysqli_affected_rows($conn);
 }
 
-//function registerasi user
+//registerasi user
 function register($data) {
 	global $conn;
 

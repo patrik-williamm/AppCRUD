@@ -1,10 +1,9 @@
 <?php
 $id_kls = end($_GET);
-var_dump($id_kls);
 $hapus = hapusdatakls($id_kls);
-var_dump($hapus);
-if ($hapus) {
+
+if ($hapus==false) {
 	header('location:admin.php?page=kelas&delete=succes');
+}else{
+	header('location:admin.php?page=kelas&delete=failed');
 }
-header('location:admin.php?page=kelas&delete=failed');
-exit();

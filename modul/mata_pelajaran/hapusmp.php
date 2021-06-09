@@ -8,4 +8,5 @@ if (!$hapus) {
 	header('location: admin.php?page=mata_pelajaran&delete=failed');
 }
 header('location: admin.php?page=mata_pelajaran&delete=succes');
+
 exit();
