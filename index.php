@@ -15,7 +15,12 @@ if (isset($_COOKIE["keyid"]) && isset($_COOKIE["key"])) {
 }
 
 if (isset($_SESSION['email']) && isset($_SESSION['nama'])) {
-	header('location: modul/admin/index.php');
+  if ($_SESSION['status']=='admin') {
+  	 header('location: modul/admin/index.php');
+     exit;
+  }
+  header('location: modul/user/index.php');
+  exit;
 }
 if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
@@ -38,10 +43,10 @@ if (isset($_POST['submit'])) {
 
       if ($_SESSION['status']=='admin') {
 			 header('location: modul/admin/index.php');
-       exit; 
+       die();
       }elseif ($_SESSION['status']=='user') {
-        header('location: modul/siswa/index.php');
-        exit;
+        header('location: modul/user/index.php');
+        die();
       }
 		}
 	}
