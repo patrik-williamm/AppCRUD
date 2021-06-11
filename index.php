@@ -41,10 +41,10 @@ if (isset($_POST['submit'])) {
         setcookie("setkey", hash("haval160,4",$dt['nama']), time()+360000);  
       }
 
-      if ($_SESSION['status']=='admin') {
+      if ($_SESSION['status']==='admin') {
 			 header('location: modul/admin/index.php');
        die();
-      }elseif ($_SESSION['status']=='user') {
+      }elseif ($_SESSION['status']==='user') {
         header('location: modul/user/index.php');
         die();
       }
