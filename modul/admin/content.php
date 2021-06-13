@@ -51,10 +51,10 @@ if (isset($_GET['page'])) {
 			require_once 'siswa/hapusw.php';
 			break;
 		default:
-			require_once '../index.php';
+			require_once 'home.php';
 			break;
 	}
 }else {
-	require_once '../index.php';
+	require_once 'home.php';
 }
 

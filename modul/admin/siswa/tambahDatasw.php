@@ -4,7 +4,7 @@ if (isset($_POST['submit'])) {
 	$siswa = tambahDatass($_POST);
 
 	if ($siswa) {
-		header('location:admin.php?page=siswa&data=succes');
+		header('location:index.php?page=siswa&data=succes');
 	}
 }
 

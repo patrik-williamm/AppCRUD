@@ -6,10 +6,10 @@
 		$editgr = editgr($_POST);
 
 		if ($editgr) {
-			header('location:admin.php?page=guru&edit=succes');
+			header('location:index.php?page=guru&edit=succes');
 			exit();
 		}
-		header('location:admin.php?page=guru&edit=failed');
+		header('location:index.php?page=guru&edit=failed');
 		exit();
 	}
 ?>

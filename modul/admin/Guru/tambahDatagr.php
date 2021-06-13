@@ -2,7 +2,7 @@
 if (isset($_POST['submit'])) {
 	$gurus = tambahDatagr($_POST);
 	if ($gurus) {
-		header('location:admin.php?page=guru&data=succes');
+		header('location:index.php?page=guru&data=succes');
 	}
 }
 $guru_mp = view("SELECT nama_mp FROM mata_pelajaran ORDER BY nama_mp ASC");

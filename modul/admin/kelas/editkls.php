@@ -6,10 +6,10 @@ $id_fromURL = $_GET['edit'];
 		$editkls = editkls($_POST);
 
 		if (!$editkls) {
-			header('location: admin.php?page=kelas&edit=failed');
+			header('location: index.php?page=kelas&edit=failed');
 			exit;
 		}
-		header('location: admin.php?page=kelas&edit=succes');
+		header('location: index.php?page=kelas&edit=succes');
 		exit;
 	}
 ?>

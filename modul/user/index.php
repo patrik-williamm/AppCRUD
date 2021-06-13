@@ -1,7 +1,7 @@
 <?php session_start();
 
 	if (!$_SESSION['email'] && !$_SESSION['nama']) {
-		header('location: ../../index.php?status=gagal');
+		header('location: ../../index.php');
 
 	}else {
 		require_once '../../config/Config.php';

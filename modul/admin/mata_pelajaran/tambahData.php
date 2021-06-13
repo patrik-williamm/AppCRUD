@@ -3,7 +3,7 @@ if (isset($_POST['simpan'])) {
 	$data_mp = tambahDataMP($_POST);
 	
 	if ($data_mp) {
-		header('location: admin.php?page=mata_pelajaran&data=succes');
+		header('location: index.php?page=mata_pelajaran&data=succes');
 	}
 } 
 ?>

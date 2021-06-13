@@ -3,7 +3,7 @@ if (isset($_POST['submit'])) {
 	$kelas = tambahDatakls($_POST);
 
 	if ($kelas) {
-		header('location: admin.php?page=kelas&data=succes');
+		header('location: index.php?page=kelas&data=succes');
 	}
 }
 $v_kls = view("SELECT nama_guru FROM guru");

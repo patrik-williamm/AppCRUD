@@ -6,10 +6,10 @@
 		$editsw = editsw($_POST);
 
 		if (!$editsw) {
-			header('location: admin.php?page=siswa&edit=failed');
+			header('location: index.php?page=siswa&edit=failed');
 			exit;
 		}
-		header('location: admin.php?page=siswa&edit=succes');
+		header('location: index.php?page=siswa&edit=succes');
 		exit;
 	}
 ?>

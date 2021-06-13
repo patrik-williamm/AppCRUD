@@ -1,7 +1,7 @@
 <?php
 	$id_mp = end($_GET); 
 	if ($id_mp == null) {
-		header('location: admin.php?page=mata_pelajaran');
+		header('location: index.php?page=mata_pelajaran');
 		return false;
 	}
 	$mp = view("SELECT * FROM mata_pelajaran WHERE id_mp='$id_mp'")[0];
@@ -9,9 +9,9 @@
 	if (isset($_POST['submit'])) {
 		$editmp = editmp($_POST);
 		if ($editmp) {
-			header('location:admin.php?page=mata_pelajaran&data=succes');
+			header('location:index.php?page=mata_pelajaran&data=succes');
 		}else{
-			header('location:admin.php?page=mata_pelajaran&data=failed');
+			header('location:index.php?page=mata_pelajaran&data=failed');
 			return false;
 		}
 	}
