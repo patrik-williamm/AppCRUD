@@ -1,14 +1,8 @@
-
-<div class="mt-4 p-3">
-  <ul class="nav flex-column">
-  <li class="nav-item mb-5">
-    <a class="nav-link active" aria-current="page" href="?q=tugas">Tugas</a>
-  </li>
-  <li class="nav-item mb-5">
-    <a class="nav-link" href="?q=kehadiran">Absensi</a>
-  </li>
-  <li class="nav-item mb-5">
-    <a class="nav-link" href="?q=anggota">Anggota</a>
-  </li>
-</ul>
-</div>
+<frameset rows="20%,*,10%" border="1">
+    <frame name="header" src="frames/nv.php"></frame>
+    <frameset cols="25%,*" border="1">
+        <frame name="sidebar" src="sidebar.html"></frame>
+        <frame name="konten" src="conten.html"></frame>
+    </frameset>
+    <frame name="footer" src="footer.html"></frame>
+</frameset>

@@ -184,9 +184,7 @@ function hapusdataklssw($id) {
 }
 
 //upload file
-// function upload() {
-// 	$namaFile = 
-// }
+// k
 
 //registerasi user
 function register($data) {
