@@ -183,6 +183,11 @@ function hapusdataklssw($id) {
 	return mysqli_affected_rows($conn);
 }
 
+//upload file
+// function upload() {
+// 	$namaFile = 
+// }
+
 //registerasi user
 function register($data) {
 	global $conn;
