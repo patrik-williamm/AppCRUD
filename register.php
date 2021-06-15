@@ -1,55 +1,8 @@
 <?php session_start();
 require_once 'config/Config.php'; 
-// if (isset($_SESSION['email'])) {
-// 	header('location: admin.php');
-// 	die("access denied");
-// }
-
-// if (!isset($_SESSION['email'])) {
-// 	header('location: index,php');
-// 	die('access denied');
-// }
-// //Import PHPMailer classes into the global namespace
-// //These must be at the top of your script, not inside a function
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\SMTP;
-// use PHPMailer\PHPMailer\Exception;
-
-// require 'config/src/Exception.php';
-// require 'config/src/PHPMailer.php';
-// require 'config/src/SMTP.php';
-
-// //Instantiation and passing `true` enables exceptions
-// $mail = new PHPMailer(true);
 
 if (isset($_POST['submit'])) {
 	$user = register($_POST);
-	// if ($user) {
-	    //Server settings
-	//     $mail->isSMTP();                                      //Send using SMTP
-	//     $mail->Host       = 'smtp.gmail.com';                 //Set the SMTP server to send through
-	//     $mail->SMTPAuth   = true;                             //Enable SMTP authentication
-	//     $mail->Username   = 'pwappweb503@gmail.com';          //SMTP username
-	//     $mail->Password   = 'patrikasa123';                   //SMTP password
-	//     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
-	//     $mail->Port       = 587;          
-
-	//     //Recipients
-	//     $mail->setFrom('pwappweb503@gmail.com', '000');
-	//     $mail->addAddress($_POST['email'], $_POST['nama']);  						//Add a recipient
-	//     $mail->addAddress($_POST['email']);           					//Name is optional
-
-	//     //Content
-	//     $mail->isHTML(true);                                    //Set email format to HTML
-	//     $mail->Subject = 'Registrasi Akun';
-	//     $mail->Body    = hash('ripemd160', 'Akun');
-	    
-	//     $mail->send();
-	// 	header('location: index.php?status=sukses');
-	// }else {
-	// 	header('location: register.php?status=gagal');
-	// }
-}
 ?>
 <!doctype html>
 <html lang="en">
