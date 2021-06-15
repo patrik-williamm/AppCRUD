@@ -1,7 +1,7 @@
     <!-- footer -->
     <div class="container py-4">
     <footer class="pt-3 mt-4 text-muted border-top">
-      &copy; 2021-<?= date('Y')?> | Patrik William
+      Copyright &copy; 2021-<?= date('Y')?> | <a href="https://patrikpasamboan.000webhostapp.com/">Patrik William</a>
     </footer>
   </div>
     <!-- akhir footer -->

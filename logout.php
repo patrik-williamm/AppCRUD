@@ -4,6 +4,7 @@ $_SESSION = [];
 unset($_SESSION['email']);
 unset($_SESSION['nama']);
 unset($_SESSION['submit']);
+unset($_SESSION['status']);
 session_unset();
 session_destroy();
 

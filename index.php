@@ -9,12 +9,10 @@ if (isset($_COOKIE["keyid"]) && isset($_COOKIE["key"])) {
     if ($key= hash("haval160,4",$dt['nama'])) {
       $_SESSION['submit'] = true;
     }
-    header('location:index.php');
   }
-  header('location:index.php');
 }
 
-if (isset($_SESSION['email']) && isset($_SESSION['nama'])) {
+if (isset($_SESSION['submit'])) {
   if ($_SESSION['status']=='admin') {
   	 header('location: modul/admin/index.php');
      exit;
@@ -47,6 +45,11 @@ if (isset($_POST['submit'])) {
       }elseif ($_SESSION['status']==='user') {
         header('location: modul/user/index.php');
         die();
+      }else{
+        echo "<script>
+                alert('maaf perminta tidak dapat diproses!!!');
+            </script>";
+        return false;
       }
 		}
 	}
@@ -115,7 +118,7 @@ if (isset($_POST['submit'])) {
           </label> -->
         </div>
         <button class="w-100 btn btn-lg btn-primary" name="submit" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2021-<?= date('Y'); ?> | patrik william</p>
+        <p class="mt-5 mb-3 text-muted"> Copyright &copy; 2021-<?= date('Y')?> | <a href="https://patrikpasamboan.000webhostapp.com/" target="blank">Patrik William</a></p>
       </form>
     </main>
   </body>

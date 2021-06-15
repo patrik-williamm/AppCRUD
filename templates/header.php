@@ -40,7 +40,7 @@
       <!-- navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white shadow-sm">
         <div class="container">
-           <a class="navbar-brand mx-2" href="?page=Dashboard">Patrik_Williamm</a>
+           <a class="navbar-brand mx-2" href="index.php">Patrik_Williamm</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -49,13 +49,9 @@
               <ul class="navbar-nav ms-auto">
                 <hr class="bg-dark mb-0 p-0">
                 <li class="nav-item ms-3">
-                  <a class="nav-link active" href="">Jadwal Pelajaran</a>
+                  <a class="nav-link active" href="?q=kelas">Kelas</a>
                 </li>
-                <hr class="bg-dark mb-0 p-0">
-                <li class="nav-item ms-3">
-                  <a class="nav-link active" href="">MY-Profile</a>
-                </li>
-                <hr class="bg-primary mb-0">
+                <hr class="bg-primary mb-0 p-0">
               </ul>
               <?php elseif ($_SESSION['status']=='admin'): ?>
                <ul class="navbar-nav ms-auto">

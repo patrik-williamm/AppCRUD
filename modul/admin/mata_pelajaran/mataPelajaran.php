@@ -1,6 +1,6 @@
 <?php
   //menampilkan data matapelajaran
-  $matapelajaran = view("SELECT * FROM mata_pelajaran ORDER BY nama_mp DESC");
+  $matapelajaran = view("SELECT * FROM mata_pelajaran ORDER BY jurusan_mp ASC");
 ?>
 <main>
   <div class="container py-4">

@@ -27,7 +27,7 @@
 	      <?php endif; ?>
 	      <!-- akhir alert -->
 		 <table class="table table-striped container">
-			<tr class="table-primary">
+			<tr class="table-primary text-center">
 				<th class="table-primary">No</th>
 				<th class="table-primary">Nama Wali Kelas</th>
 				<th class="table-primary">Jumlah siswa</th>
@@ -36,10 +36,10 @@
 			</tr>
 			<?php $i = 1; ?>
 			<?php foreach($kelas as $kls): ?>
-			<tr class="table-light">
+			<tr class="table-light text-center">
 				<td class="table-light"><?= $i; ?></td>
 				<td class="table-light"><?= $kls['nama_Walikls'] ?></td>
-				<td class="table-light"><?= $kls['jlh_siswa'] ?></td>
+				<td class="table-light"><?= $kls['jlh_siswa'] ?> Siswa</td>
 				<td class="table-light"><?= $kls['nama_kls'] ?></td>
 				<td class="table-light">
 					<a href="?page=edit_kls&edit=<?= $kls['id_kelas'] ?>">Edit</a> | 
