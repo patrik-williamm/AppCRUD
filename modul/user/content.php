@@ -5,8 +5,8 @@ if (isset($_GET['q'])) {
 		case 'kelas':
 			require_once 'kelas/index.php';
 			break;
-		case 'jadwal':
-			require_once 'jadwal/index.php';
+		case 'mykelas':
+			require_once 'kelas/view.php';
 			break;
 		default:
 			require_once 'home.php';
