@@ -8,12 +8,6 @@
 
 	if (isset($_POST['submit'])) {
 		$editmp = editmp($_POST);
-		if ($editmp) {
-			header('location:index.php?page=mata_pelajaran&data=succes');
-		}else{
-			header('location:index.php?page=mata_pelajaran&data=failed');
-			return false;
-		}
 	}
 ?>
 <main>

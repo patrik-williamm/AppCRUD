@@ -1,10 +1,6 @@
 <?php 
 if (isset($_POST['submit'])) {
 	$kelas = tambahDatakls($_POST);
-
-	if ($kelas) {
-		header('location: index.php?page=kelas&data=succes');
-	}
 }
 $v_kls = view("SELECT nama_guru FROM guru");
 $df_kls = view("SELECT kls FROM df_kls");

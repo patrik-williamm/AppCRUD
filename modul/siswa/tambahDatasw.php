@@ -1,11 +1,12 @@
 <?php
-
 if (isset($_POST['submit'])) {
 	$siswa = tambahDatass($_POST);
 
-	if ($siswa) {
-		header('location:index.php?page=siswa&data=succes');
-	}
+  if (!$siswa) {
+    header('location:admin.php?page=siswa&data=failed');
+  }
+  header('location:admin.php?page=siswa&data=succes');
+  exit();
 }
 
 $nama_kls = view("SELECT nama_kls FROM kelas");

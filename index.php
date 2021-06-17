@@ -13,12 +13,7 @@ if (isset($_COOKIE["keyid"]) && isset($_COOKIE["key"])) {
 }
 
 if (isset($_SESSION['submit'])) {
-  if ($_SESSION['status']=='admin') {
-  	 header('location: modul/admin/index.php');
-     exit;
-  }
-  header('location: modul/user/index.php');
-  exit;
+  header('location: admin.php');
 }
 if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
@@ -32,25 +27,12 @@ if (isset($_POST['submit'])) {
       $_SESSION['submit'] = true;
 			$_SESSION['email'] = $dt['email'];
       $_SESSION['nama'] = $dt['nama'];
-      $_SESSION['status'] = $dt['status'];
       //setcookie id dan nama dari user
       if (isset($_POST['remember'])) {
         setcookie("keyid", $dt['id'], time()+360000);
         setcookie("setkey", hash("haval160,4",$dt['nama']), time()+360000);  
       }
-
-      if ($_SESSION['status']==='admin') {
-			 header('location: modul/admin/index.php');
-       die();
-      }elseif ($_SESSION['status']==='user') {
-        header('location: modul/user/index.php');
-        die();
-      }else{
-        echo "<script>
-                alert('maaf perminta tidak dapat diproses!!!');
-            </script>";
-        return false;
-      }
+      header('location: admin.php');
 		}
 	}
   $error=true;

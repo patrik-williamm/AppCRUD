@@ -1,10 +1,6 @@
 <?php //menanambah data baru
 if (isset($_POST['simpan'])) {
 	$data_mp = tambahDataMP($_POST);
-	
-	if ($data_mp) {
-		header('location: index.php?page=mata_pelajaran&data=succes');
-	}
 } 
 ?>
 <main>

@@ -1,16 +1,14 @@
 <?php
+ob_get_contents();
 $id_fromURL = $_GET['edit'];
 	$v_kelas = view("SELECT * FROM kelas WHERE id_kelas='$id_fromURL'")[0];
 
 	if (isset($_POST['ubah'])) {
 		$editkls = editkls($_POST);
 
-		if (!$editkls) {
-			header('location: index.php?page=kelas&edit=failed');
-			exit;
+		if ($editkls) {
+			header('location : index.php?page=kelas');
 		}
-		header('location: index.php?page=kelas&edit=succes');
-		exit;
 	}
 ?>
 <main>

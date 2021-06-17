@@ -4,14 +4,6 @@
 
 	if (isset($_POST['ubah'])) {
 		$editgr = editgr($_POST);
-
-		if ($editgr) {
-			header('location:index.php?page=guru&edit=succes');
-			exit();
-		}
-		header('location:index.php?page=guru&edit=failed');
-		exit();
-	}
 ?>
 <main>
   <div class="container py-4">

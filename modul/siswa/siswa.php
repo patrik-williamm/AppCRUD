@@ -5,6 +5,16 @@
       <a href="?page=new_sw" class="btn btn-primary mb-2 mt-2" >
         New File
       </a>
+      <div class="row">
+        <form class="">
+          <div class="col-md-3">
+            <input type="text" name="cari" placeholder="Search" class="form-control mb-3 mt-2" autocomplete="off">
+          </div>
+          <div class="">
+            <button type="submit" name="cari" class="">Cari</button>
+          </div>
+        </form>
+      </div>
       <!-- alert -->
       <?php if(isset($_GET['data'])): ?>
         <?php $data = $_GET['data'] ?>
