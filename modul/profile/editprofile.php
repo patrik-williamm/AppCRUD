@@ -94,18 +94,18 @@ if (isset($_GET['id'])) {
           <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $myUser['id'] ?>">
             <div class="form-floating mb-3 col-md-8 offset-md-2">
-              <input type="text" class="form-control" id="nama" name="nama" value="<?= $myUser['nama'] ?>">
+              <input type="text" class="form-control" aria-label="Disabled input example" disabled id="nama" name="nama" value="<?= $myUser['nama'] ?>">
               <label for="nama">Nama User</label>
             </div>
             <div class="form-floating mb-3 col-md-8 offset-md-2">
-              <input type="text" class="form-control" id="email" name="email" value="<?= $myUser['email'] ?>">
+              <input type="text" aria-label="Disabled input example" disabled class="form-control" id="email" name="email" value="<?= $myUser['email'] ?>">
               <label for="email">Email User</label>
             </div>
             <div class="form-floating mb-3 col-md-8 offset-md-2">
               <input type="hidden" class="form-control" id="password" name="password" value="<?= $myUser['password'] ?>">
             </div>
             <div class="form-floating mb-3 col-md-8 offset-md-2">
-              <input type="text" class="form-control" id="status" name="status" value="<?= $myUser['status'] ?>">
+              <input type="text" aria-label="Disabled input example" disabled class="form-control" id="status" name="status" value="<?= $myUser['status'] ?>">
               <label for="status">Status User</label>
             </div>
             <div class="mb-3 col-md-8 offset-md-2">

@@ -4,6 +4,7 @@
 	}
 
 	$my = view("SELECT * FROM users WHERE email='$_SESSION[email]'")[0];
+
 ?>
 <main>
   <div class="container py-4">
@@ -23,6 +24,12 @@
         </div>  
 	    </div>
     </div>
-    <a href="?page=upProfile&id=<?= $my['id'] ?>">Update Profile</a>
+    <a href="?page=upProfile&id=<?= $my['id'] ?>" class="mx-2">Update Profile</a>
+    <a href="mailer.php" class="mx-2">Contact Me</a>
+    <a href="logout.php" class="mx-2 btn  btn-outline-danger">Logout</a>
   </div>
 </main>
+
+
+
+
