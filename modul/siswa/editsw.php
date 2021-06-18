@@ -1,16 +1,20 @@
 <?php  
-	$id_fromUrl = end($_GET);
-	$v_siswa = view("SELECT * FROM siswa WHERE id_siswa='$id_fromUrl'")[0];
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+	header('location:index.php');
+}
 
-	if (isset($_POST['ubah'])) {
-		$editsw = editsw($_POST);
-		
-		if (!$editsw) {
-			header('location: admin.php?page=siswa&edit=failed');
-		}
-		header('location: admin.php?page=siswa&edit=succes');
-		exit();
+$id_fromUrl = end($_GET);
+$v_siswa = view("SELECT * FROM siswa WHERE id_siswa='$id_fromUrl'")[0];
+
+if (isset($_POST['ubah'])) {
+	$editsw = editsw($_POST);
+	
+	if (!$editsw) {
+		header('location: admin.php?page=siswa&edit=failed');
 	}
+	header('location: admin.php?page=siswa&edit=succes');
+	exit();
+}
 ?>
 <main>
   <div class="container py-4">

@@ -5,7 +5,7 @@ if (!$conn) {
 }
 
 //constant url
-define('BASEURL', 'http://localhost/PwWebApp');
+define('BASEURL', 'http://localhost/AppCRUD');
 
 //function untuk menampilkan data
 function view($sql) {
@@ -183,9 +183,6 @@ function hapusdataklssw($id) {
 	return mysqli_affected_rows($conn);
 }
 
-//upload file
-// k
-
 //registerasi user
 function register($data) {
 	global $conn;
@@ -213,7 +210,7 @@ function register($data) {
 
 	//generate password
 	$password = password_hash($password, PASSWORD_DEFAULT);
-	$result = mysqli_query($conn, "INSERT INTO users VALUES( '', '$nama', '$email', '$password', 'user' )");
+	$result = mysqli_query($conn, "INSERT INTO users VALUES( '', 'images.jpg','$nama', '$email', '$password', 'user' )");
 
 	return mysqli_affected_rows($conn);
 }

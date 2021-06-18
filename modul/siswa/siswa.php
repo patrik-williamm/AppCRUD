@@ -1,31 +1,27 @@
-<?php $siswa = view("SELECT * FROM siswa order by id_siswa DESC") ?>
+<?php 
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+  header('location:index.php');
+}
+
+$siswa = view("SELECT * FROM siswa order by kelas_siswa DESC LIMIT 20");
+?>
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
       <a href="?page=new_sw" class="btn btn-primary mb-2 mt-2" >
         New File
       </a>
-      <div class="row">
-        <form class="">
-          <div class="col-md-3">
-            <input type="text" name="cari" placeholder="Search" class="form-control mb-3 mt-2" autocomplete="off">
-          </div>
-          <div class="">
-            <button type="submit" name="cari" class="">Cari</button>
-          </div>
-        </form>
-      </div>
       <!-- alert -->
       <?php if(isset($_GET['data'])): ?>
         <?php $data = $_GET['data'] ?>
         <?php if($data == 'succes'): ?>
           <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            Data Berhasil Ditambahkan
+            Data Berhasil <?= $_GET['page'] ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           <?php elseif($data == 'failed'): ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              Data Gagal Ditambahkan
+              Data Gagal <?= $_GET['page'] ?>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <?php else: ?>

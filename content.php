@@ -53,6 +53,12 @@ if (isset($_GET['page'])) {
 		case 'delete_sw':
 			require_once 'modul/siswa/hapusw.php';
 			break;
+		case 'profile':
+			require_once 'modul/profile/index.php';
+			break;
+		case 'upProfile':
+			require_once 'modul/profile/editprofile.php';
+			break;
 		default:
 			require_once 'modul/home.php';
 			break;

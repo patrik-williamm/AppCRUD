@@ -1,14 +1,17 @@
 <?php
-	$id_mp = end($_GET); 
-	if ($id_mp == null) {
-		header('location: index.php?page=mata_pelajaran');
-		return false;
-	}
-	$mp = view("SELECT * FROM mata_pelajaran WHERE id_mp='$id_mp'")[0];
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+	header('location:index.php');
+}
+$id_mp = end($_GET); 
+if ($id_mp == null) {
+	header('location: index.php?page=mata_pelajaran');
+	return false;
+}
+$mp = view("SELECT * FROM mata_pelajaran WHERE id_mp='$id_mp'")[0];
 
-	if (isset($_POST['submit'])) {
-		$editmp = editmp($_POST);
-	}
+if (isset($_POST['submit'])) {
+	$editmp = editmp($_POST);
+}
 ?>
 <main>
   <div class="container py-4">

@@ -1,6 +1,9 @@
 <?php
-  //menampilkan data matapelajaran
-  $matapelajaran = view("SELECT * FROM mata_pelajaran ORDER BY jurusan_mp ASC");
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+  header('location:index.php');
+}
+//menampilkan data matapelajaran
+$matapelajaran = view("SELECT * FROM mata_pelajaran ORDER BY jurusan_mp ASC");
 ?>
 <main>
   <div class="container py-4">

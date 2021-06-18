@@ -1,5 +1,9 @@
 <?php 
-    $kelas = view("SELECT * FROM kelas ORDER BY nama_kls ASC"); 
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+	header('location:index.php');
+}
+
+$kelas = view("SELECT * FROM kelas ORDER BY nama_kls ASC"); 
 ?>
 <main>
   <div class="container py-4">

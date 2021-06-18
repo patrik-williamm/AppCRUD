@@ -27,7 +27,9 @@ if (isset($_POST['submit'])) {
       $_SESSION['submit'] = true;
 			$_SESSION['email'] = $dt['email'];
       $_SESSION['nama'] = $dt['nama'];
+      //
       //setcookie id dan nama dari user
+      //
       if (isset($_POST['remember'])) {
         setcookie("keyid", $dt['id'], time()+360000);
         setcookie("setkey", hash("haval160,4",$dt['nama']), time()+360000);  

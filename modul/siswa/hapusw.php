@@ -1,4 +1,8 @@
 <?php
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+	header('location:index.php');
+}
+
 $id_sw = end($_GET);
 $hapus = hapusdataklssw($id_sw);
 

@@ -1,4 +1,8 @@
 <?php 
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+	header('location:index.php');
+}
+
 if (isset($_POST['submit'])) {
 	$gurus = tambahDatagr($_POST);
 }

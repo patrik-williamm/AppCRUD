@@ -1,4 +1,8 @@
-<?php //menanambah data baru
+<?php 
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+	header('location:index.php');
+}
+//menanambah data baru
 if (isset($_POST['simpan'])) {
 	$data_mp = tambahDataMP($_POST);
 } 

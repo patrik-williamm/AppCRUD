@@ -1,3 +1,9 @@
+<?php 
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+  header('location:index.php');
+}
+$img = view("SELECT img FROM users WHERE email='$_SESSION[email]'")[0]; 
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -61,6 +67,12 @@
               <hr class="bg-dark mb-0 p-0">
               <li class="nav-item ms-3">
                 <a class="nav-link active" href="?page=mp">Mata Pelajaran</a>
+              </li>
+              <hr class="bg-dark mb-0">
+              <li class="nav-item ms-3">
+                <a class="nav-link active" href="?page=profile">
+                  <img src="<?= BASEURL ?>/file/img-profile/<?= $img['img'] ?>" alt="images.jpg" width="34" height="34" class="rounded-circle" >
+                </a>
               </li>
               <hr class="bg-primary mb-0">
             </ul>

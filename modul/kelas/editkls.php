@@ -1,4 +1,7 @@
 <?php
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+	header('location:index.php');
+}
 ob_get_contents();
 $id_fromURL = $_GET['edit'];
 	$v_kelas = view("SELECT * FROM kelas WHERE id_kelas='$id_fromURL'")[0];

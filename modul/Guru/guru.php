@@ -1,4 +1,10 @@
-<?php $gurus = view("SELECT * FROM guru ORDER BY nip ASC") ?>
+<?php 
+if (!$_SESSION['email'] && !$_SESSION['nama']) {
+  header('location:index.php');
+}
+
+$gurus = view("SELECT * FROM guru ORDER BY nip ASC");
+?>
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
