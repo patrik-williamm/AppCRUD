@@ -56,7 +56,9 @@ function upload() {
   $namaBaruImg .= '.';
   $namaBaruImg .= $typeValid;
   
-  move_uploaded_file($tmp_name, '');
+  //location file
+  $path = "/file/img-profile"
+  move_uploaded_file($tmp_name, $path);
   return $namaBaruImg;
 }
 ?>
