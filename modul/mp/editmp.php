@@ -2,6 +2,18 @@
 if (!$_SESSION['email'] && !$_SESSION['nama']) {
 	header('location:index.php');
 }
+//edit matapelajaran
+function editmp($data) {
+	global $conn;
+
+	$id_mp = htmlspecialchars($data['id_mp']);
+	$nama_mp = htmlspecialchars($data['nama_mp']);
+	$jurusan_mp = htmlspecialchars($data['jurusan_mp']);
+
+	$result = mysqli_query($conn, "UPDATE mata_pelajaran SET id_mp='$id_mp', nama_mp='$nama_mp', jurusan_mp='$jurusan_mp' WHERE id_mp='$id_mp' ");
+	return mysqli_affected_rows($conn);
+}
+
 $id_mp = end($_GET); 
 if ($id_mp == null) {
 	header('location: index.php?page=mata_pelajaran');

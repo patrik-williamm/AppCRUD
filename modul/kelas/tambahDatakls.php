@@ -1,4 +1,24 @@
-<?php 
+<?php
+function tambahDatakls($data) {
+	global $conn;
+
+	$id_kelas = htmlspecialchars($data['id_kelas']);
+	$nama_walikls = htmlspecialchars($data['nama_walikls']);
+	$jlh_siswa = htmlspecialchars($data['jlh_siswa']);
+	$nama_kls = htmlspecialchars($data['nama_kls']);
+
+	$cek = mysqli_query($conn, "SELECT nama_kls FROM kelas WHERE nama_kls='$nama_kls' ");
+	mysqli_fetch_row($cek);
+	if (mysqli_fetch_assoc($cek) > 1) {
+		header('location: admin.php?page=kelas&data=failed');
+		return false;
+	}
+
+	$result = mysqli_query($conn, "INSERT INTO kelas VALUES ( '$id_kelas', '$nama_walikls', '$jlh_siswa', '$nama_kls' )");
+
+	return mysqli_affected_rows($conn);
+}
+ 
 if (isset($_POST['submit'])) {
 	$kelas = tambahDatakls($_POST);
 }

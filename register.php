@@ -1,6 +1,41 @@
 <?php
 require_once 'config/Config.php';
- if (isset($_POST)) {
+
+/**************
+function untuk pendaftran user baru
+**************/
+function register($data) {
+	global $conn;
+
+	$id = htmlspecialchars($data['id']);
+	$nama = htmlspecialchars($data['nama']);
+	$email = stripcslashes($data['email']);
+	$password = mysqli_real_escape_string($conn, $data['password']);
+	$konfirmasiPassword = mysqli_real_escape_string($conn, $data['konfirmasiPassword']);
+	$status = htmlspecialchars($data['status']);
+
+	$emailUser = mysqli_query($conn, "SELECT email FROM users WHERE email='$email'");
+	
+	if ($user = mysqli_fetch_assoc($emailUser) > 1) {
+		return false;
+	}
+
+	if ($password != $konfirmasiPassword) {
+		return false;
+	}
+
+	if (empty($password) && empty($email)) {
+		return false;
+	}
+
+	//generate password
+	$password = password_hash($password, PASSWORD_DEFAULT);
+	$result = mysqli_query($conn, "INSERT INTO users VALUES( '', 'images.jpg','$nama', '$email', '$password', 'user' )");
+
+	return mysqli_affected_rows($conn);
+}
+
+ if (isset($_POST['submit'])) {
 	 $users = register($_POST);
   } 
 ?>
@@ -14,10 +49,10 @@ require_once 'config/Config.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Register</title>
   </head>
   <body>
-	<form action="" method="post">
+	<form action="" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="id">
 		<div class="col-md-8 offset-md-2">
 			<div class="mb-3">

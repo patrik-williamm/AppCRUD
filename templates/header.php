@@ -44,7 +44,7 @@ $img = view("SELECT img FROM users WHERE email='$_SESSION[email]'")[0];
   </head>
   <body>
       <!-- navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white shadow-sm fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white shadow-sm">
         <div class="container">
            <a class="navbar-brand mx-2" href="admin.php">Patrik_Williamm</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +71,7 @@ $img = view("SELECT img FROM users WHERE email='$_SESSION[email]'")[0];
               <hr class="bg-dark mb-0">
               <li class="nav-item ms-3">
                 <a class="nav-link active" href="?page=profile">
-                  <img src="<?= BASEURL ?>/file/img-profile/<?= $img['img'] ?>" alt="images.jpg" width="34" height="34" class="rounded-circle" >
+                  <img src="<?= BASEURL ?>/file/<?= $img['img'] ?>" alt="images.jpg" width="34" height="34" class="rounded-circle" >
                 </a>
               </li>
               <hr class="bg-primary mb-0">

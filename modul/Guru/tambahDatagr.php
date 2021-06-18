@@ -2,6 +2,33 @@
 if (!$_SESSION['email'] && !$_SESSION['nama']) {
 	header('location:index.php');
 }
+/*************
+function untuk menambahkan data ke tabel guru
+**************/
+function tambahDatagr($data) {
+	global $conn;
+
+	$id_guru = htmlspecialchars($data['id_guru']);
+	$nama_guru = htmlspecialchars($data['nama_guru']);
+	$nip = htmlspecialchars(trim($data['nip']));
+	$alamat = htmlspecialchars($data['alamat']);
+	$email = htmlspecialchars(stripcslashes($data['email']));
+	$guru_study =htmlspecialchars($data['guru_study']);
+	$status_guru = htmlspecialchars($data['status_guru']);
+
+	$cek1 = mysqli_query($conn, "SELECT nip FROM guru WHERE nip='$nip'");
+	mysqli_fetch_row($cek1);
+	if (mysqli_fetch_assoc($cek1) > 1) {
+		echo "<script>
+				alert('Guru dengan NIP telah terdaftar');
+			</script>";
+		return false;
+	}else{
+		$result = mysqli_query($conn, "INSERT INTO guru VALUES ( '$id_guru', '$nama_guru', '$nip', '$alamat', '$email', '$guru_study', '$status_guru' )");
+	}
+
+	return mysqli_affected_rows($conn);
+}
 
 if (isset($_POST['submit'])) {
 	$gurus = tambahDatagr($_POST);

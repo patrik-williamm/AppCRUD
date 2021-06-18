@@ -2,6 +2,27 @@
 if (!$_SESSION['email'] && !$_SESSION['nama']) {
   header('location:index.php');
 }
+//tambah data siswa
+function tambahDatass($data) {
+  global $conn;
+
+  $id_siswa = htmlspecialchars($data['id_siswa']);
+  $nama_siswa = htmlspecialchars($data['nama_siswa']);
+  $nis = htmlspecialchars($data['nis']);
+  $kelas = htmlspecialchars($data['kelas']);
+
+  $cek = mysqli_query($conn, "SELECT nama_siswa, nis FROM siswa WHERE nama_siswa='$nama_siswa' and nis='$nis' ");
+  mysqli_fetch_row($cek);
+  if (mysqli_fetch_assoc($cek) > 1) {
+    header('location: admin.php?page=siswa&data=failed');
+    return false;
+  }
+
+  $result = mysqli_query($conn, "INSERT INTO siswa VALUES ( '', '$nama_siswa', '$nis', '$kelas' )");
+
+  return mysqli_affected_rows($conn);
+}
+
 if (isset($_POST['submit'])) {
 	$siswa = tambahDatass($_POST);
 

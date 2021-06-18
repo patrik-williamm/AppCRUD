@@ -2,6 +2,17 @@
 if (!$_SESSION['email'] && !$_SESSION['nama']) {
 	header('location:index.php');
 }
+function editsw($data) {
+	global $conn;
+
+	$id_siswa = htmlspecialchars($data['id_siswa']);
+	$nama_siswa = htmlspecialchars($data['nama_siswa']);
+	$nis = htmlspecialchars($data['nis']);
+	$kelas_siswa = htmlspecialchars($data['kelas_siswa']);	
+
+	$result = mysqli_query($conn, "UPDATE siswa SET id_siswa='$id_siswa', nama_siswa='$nama_siswa', nis='$nis', kelas_siswa='$kelas_siswa' WHERE id_siswa='$id_siswa'");
+	return mysqli_affected_rows($conn);	
+}
 
 $id_fromUrl = end($_GET);
 $v_siswa = view("SELECT * FROM siswa WHERE id_siswa='$id_fromUrl'")[0];

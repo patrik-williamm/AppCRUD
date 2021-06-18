@@ -2,6 +2,21 @@
 if (!$_SESSION['email'] && !$_SESSION['nama']) {
 	header('location:index.php');
 }
+
+function editgr($data) {
+	global $conn;
+
+	$id_guru = htmlspecialchars($data['id_guru']);
+	$nama_guru = htmlspecialchars($data['nama_guru']);
+	$nip = htmlspecialchars($data['nip']);
+	$alamat = htmlspecialchars($data['alamat']);
+	$email = stripslashes($data['email']);
+	$guru_mp = htmlspecialchars($data['guru_mp']);
+	$status = htmlspecialchars($data['status']);
+
+	$result = mysqli_query($conn, "UPDATE guru SET id_guru='$id_guru', nama_guru='$nama_guru', nip='$nip', alamat='$alamat', email='$email',guru_mp='$guru_mp', status='$status' WHERE id_guru='$id_guru' ");
+	return mysqli_affected_rows($conn);
+}
  
 $id_fromUrl = end($_GET);
 $data_gr = view("SELECT * FROM guru WHERE id_guru='$id_fromUrl' ")[0];

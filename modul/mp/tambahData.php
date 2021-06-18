@@ -2,6 +2,30 @@
 if (!$_SESSION['email'] && !$_SESSION['nama']) {
 	header('location:index.php');
 }
+//function tambah data mata pelajaran
+function tambahDataMP($data) {
+	global $conn;
+
+	$id_mp = htmlspecialchars($data['id_mp']);
+	$nama_mp = htmlspecialchars(rtrim(ucwords($data['nama_mp'])));
+	$jurusan_mp = htmlspecialchars(strtoupper($data['jurusan_mp']));
+
+
+	$cekMp = mysqli_query($conn, "SELECT nama_mp FROM mata_pelajaran WHERE nama_mp='$nama_mp'");
+	mysqli_fetch_row($cekMp);
+	if (mysqli_fetch_assoc($cekMp) > 1) 
+	{
+		header('location: admin.php?page=mata_pelajaran&data=failed');
+		return false;
+	}
+	//cek apakah semua data telah diisi
+	if (empty($nama_mp) && empty($jurusan_mp)) {
+		header('location: admin.php?page=mata_pelajaran&data=failed');
+		return false;
+	}
+	$result = mysqli_query($conn, "INSERT INTO mata_pelajaran VALUES ('$id_mp', '$nama_mp', '$jurusan_mp')");	
+	return mysqli_affected_rows($conn);
+}
 //menanambah data baru
 if (isset($_POST['simpan'])) {
 	$data_mp = tambahDataMP($_POST);

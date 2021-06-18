@@ -5,19 +5,29 @@ if (!$_SESSION['email'] && !$_SESSION['nama']) {
 
 $myUser = view("SELECT * FROM users WHERE email='$_SESSION[email]'")[0];
 
-if (isset($_GET['id'])) {
-  $idUpdate = $_GET['id'];
+function updateProfile($data) {
+  global $conn;
+  $id = htmlspecialchars($data['id']);
+  $nama = htmlspecialchars($data['nama']);
+  $email = htmlspecialchars($data['email']);
+  $password = htmlspecialchars($data['password']);
+  $status = htmlspecialchars($data['status']);
+  $img = upload();
 
-  if (isset($_POST['submit'])) {
-    $nama = htmlspecialchars($_POST['nama']);
-    $img = upload();
-
-    if (!$img) {
-      return false;
-    }
-
-    $result = mysqli_query("UPDATE users SET id='', img='$img', nama='$nama', email='', password ='', status='' WHERE id='$idUpdate'");
+  if (empty($img)) {
+    return false;
   }
+
+  $result = mysqli_query($conn, "UPDATE users SET 
+    id='$id', 
+    img='$img', 
+    nama='$nama', 
+    email='$email', 
+    password ='$password', 
+    status='$status' 
+    WHERE id='$id'");
+
+    return mysqli_affected_rows($conn);
 }
 
 function upload() {
@@ -29,7 +39,7 @@ function upload() {
 
   if ($err == 4) {
     echo "<script>
-            alert('img error!!!');
+            alert('error img!!!');
           </script>";
     return false;
   }
@@ -54,14 +64,28 @@ function upload() {
   //generate nama baru
   $namaBaruImg = uniqid();
   $namaBaruImg .= '.';
-  $namaBaruImg .= $typeValid;
+  $namaBaruImg .= $type;
   
   //location file
-  $path = "/file/img-profile"
+  $path = "file/$namaBaruImg";
   move_uploaded_file($tmp_name, $path);
   return $namaBaruImg;
 }
+if (isset($_GET['id'])) {
+  $idUpdate = $_GET['id'];
+
+  if (isset($_POST['submit'])) {
+    $myUser = updateProfile($_POST);
+    if (!$myUser) {
+      header('location:admin.php?page=profile');
+    }
+    header('location : admin.php?page=profile');
+
+  }
+}
+
 ?>
+
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
@@ -72,6 +96,17 @@ function upload() {
             <div class="form-floating mb-3 col-md-8 offset-md-2">
               <input type="text" class="form-control" id="nama" name="nama" value="<?= $myUser['nama'] ?>">
               <label for="nama">Nama User</label>
+            </div>
+            <div class="form-floating mb-3 col-md-8 offset-md-2">
+              <input type="text" class="form-control" id="email" name="email" value="<?= $myUser['email'] ?>">
+              <label for="email">Email User</label>
+            </div>
+            <div class="form-floating mb-3 col-md-8 offset-md-2">
+              <input type="hidden" class="form-control" id="password" name="password" value="<?= $myUser['password'] ?>">
+            </div>
+            <div class="form-floating mb-3 col-md-8 offset-md-2">
+              <input type="text" class="form-control" id="status" name="status" value="<?= $myUser['status'] ?>">
+              <label for="status">Status User</label>
             </div>
             <div class="mb-3 col-md-8 offset-md-2">
               <label for="img" class="mb-2">Img Profile</label>

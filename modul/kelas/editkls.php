@@ -1,8 +1,22 @@
 <?php
+ob_get_contents();
 if (!$_SESSION['email'] && !$_SESSION['nama']) {
 	header('location:index.php');
 }
-ob_get_contents();
+
+function editkls($data) {
+	global $conn;
+
+	$id_kelas = htmlspecialchars($data['id_kelas']);
+	$nama_Walikls = htmlspecialchars($data['nama_Walikls']);
+	$jlh_siswa = htmlspecialchars($data['jlh_siswa']);
+	$nama_kls = htmlspecialchars($data['nama_kls']);
+
+	$result = mysqli_query($conn, "UPDATE kelas SET id_kelas='', nama_Walikls='$nama_Walikls', jlh_siswa='$jlh_siswa', nama_kls='$nama_kls' WHERE id_kelas='$id_kelas'");
+
+	return mysqli_affected_rows($conn);
+}
+
 $id_fromURL = $_GET['edit'];
 	$v_kelas = view("SELECT * FROM kelas WHERE id_kelas='$id_fromURL'")[0];
 

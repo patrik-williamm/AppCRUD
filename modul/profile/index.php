@@ -11,7 +11,7 @@
       <div class="container-fluid py-5">
         <div class="row">
           <div class="col-md-4 offset-md-4">
-              <img src="<?= BASEURL ?>/file/img-profile/<?= $my['img'] ?>" class="rounded-circle" width="210" height="210" alt="images">
+              <img src="<?= BASEURL ?>/file/<?= $my['img'] ?>" class="rounded-circle" width="210" height="210" alt="images">
           </div>
           <div class="col-md-8 offset-md-3">
             <p class="mt-4 fw-bold">
