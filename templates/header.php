@@ -1,9 +1,5 @@
-<?php 
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-  header('location:index.php');
-}
-$img = view("SELECT img FROM users WHERE email='$_SESSION[email]'")[0]; 
-?>
+<?php ob_start(); ?>
+<?php $img = view("SELECT img FROM users WHERE email='$_SESSION[email]'")[0] ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -53,25 +49,26 @@ $img = view("SELECT img FROM users WHERE email='$_SESSION[email]'")[0];
           <div class="collapse navbar-collapse" id="navbarNav">
              <ul class="navbar-nav ms-auto">
               <hr class="bg-dark mb-0 p-0">
-              <li class="nav-item ms-3">
+              <li class="nav-item ms-3 mt-1">
                 <a class="nav-link active" href="?page=siswa">Siswa</a>
               </li>
               <hr class="bg-dark mb-0 p-0">
-              <li class="nav-item ms-3">
+              <li class="nav-item ms-3 mt-1">
                 <a class="nav-link active" href="?page=kelas">kelas</a>
               </li>
               <hr class="bg-dark mb-0 p-0">
-              <li class="nav-item ms-3">
+              <li class="nav-item ms-3 mt-1">
                 <a class="nav-link active" href="?page=guru">Guru</a>
               </li>
-              <hr class="bg-dark mb-0 p-0">
-              <li class="nav-item ms-3">
+              <hr class="bg-dark mb-3 p-0">
+              <li class="nav-item ms-3 mt-1">
                 <a class="nav-link active" href="?page=mp">Mata Pelajaran</a>
               </li>
               <hr class="bg-dark mb-0">
               <li class="nav-item ms-3">
                 <a class="nav-link active" href="?page=profile">
-                  <img src="<?= BASEURL ?>/file/<?= $img['img'] ?>" alt="images.jpg" width="34" height="34" class="rounded-circle" >
+                  <?php $imgSet = is_null($img['img']) ? 'images.jpg' : $img['img']?>
+                  <img src="<?= BASEURL ?>/file/<?= $imgSet ?>" alt="images.jpg" width="34" height="34" class="rounded-circle" >
                 </a>
               </li>
               <hr class="bg-primary mb-0">

@@ -21,6 +21,11 @@ function tambahDatakls($data) {
  
 if (isset($_POST['submit'])) {
 	$kelas = tambahDatakls($_POST);
+	if ($kelas) {
+	    echo "<script>
+	            alert('Berhasil Ditambahkan');
+	      </script>";
+  }
 }
 $v_kls = view("SELECT nama_guru FROM guru");
 $df_kls = view("SELECT kls FROM df_kls");

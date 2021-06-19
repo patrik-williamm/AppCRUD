@@ -1,9 +1,7 @@
 <?php
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-	header('location:index.php');
-}
+ob_start();
 if (isset($_GET['page'])) {
-	$page = $_GET['page'];
+	$page = filter_var($_GET['page'], FILTER_SANITIZE_URL);
 	switch ($page) {
 		case 'mp':
 			require_once 'modul/mp/mataPelajaran.php';

@@ -1,17 +1,13 @@
 <?php 
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-	header('location:index.php');
-}
-
 $kelas = view("SELECT * FROM kelas ORDER BY nama_kls ASC"); 
 ?>
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
-    	<a class="btn btn-primary mb-2 mt-2" href="?page=new_kls">Data Baru</a> 
-    	<!-- alert -->
-	      <?php if(isset($_GET['data'])): ?>
-	        <?php $data = $_GET['data'] ?>
+    	<a class="btn btn-primary mb-2 mt-2" href="?page=new_kls">Tambah Data</a> 
+    	 <!-- alert -->
+	      <?php if(isset($_GET)): ?>
+	        <?php $data = end($_GET) ?>
 	        <?php if($data == 'succes'): ?>
 	          <div class="alert alert-primary alert-dismissible fade show" role="alert">
 	            Data Berhasil Ditambahkan
@@ -20,11 +16,6 @@ $kelas = view("SELECT * FROM kelas ORDER BY nama_kls ASC");
 	          <?php elseif($data == 'failed'): ?>
 	            <div class="alert alert-danger alert-dismissible fade show" role="alert">
 	              Data Gagal Ditambahkan
-	              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	            </div>
-	            <?php else: ?>
-	              <div class="alert alert-warning alert-dismissible fade show" role="alert">
-	              selamat datang
 	              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	            </div>
 	        <?php endif; ?>

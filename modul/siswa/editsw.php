@@ -1,7 +1,4 @@
 <?php  
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-	header('location:index.php');
-}
 function editsw($data) {
 	global $conn;
 
@@ -19,11 +16,8 @@ $v_siswa = view("SELECT * FROM siswa WHERE id_siswa='$id_fromUrl'")[0];
 
 if (isset($_POST['ubah'])) {
 	$editsw = editsw($_POST);
-	
-	if (!$editsw) {
-		header('location: admin.php?page=siswa&edit=failed');
-	}
-	header('location: admin.php?page=siswa&edit=succes');
+	$info = $editsw ? 'succes' : 'failed';
+	header('location : admin.php?page=siswa');
 	exit();
 }
 ?>

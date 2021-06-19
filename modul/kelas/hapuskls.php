@@ -1,8 +1,5 @@
 <?php
 ob_start();
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-	header('location:index.php');
-}
 function hapusdatakls($id) {
 	global $conn;
 	$result = mysqli_query($conn, "DELETE FROM kelas WHERE id_kelas='$id'");
@@ -11,8 +8,14 @@ function hapusdatakls($id) {
 
 if (isset($_GET['delete'])) {
 	$dlt = $_GET['delete'];
-}else{
-	$dlt ='';
+	$hapus = hapusdatakls($dlt);
+	if ($hapus) {
+		echo "<script>
+				confirm('Anda Yakin?');
+			</script>";
+		$info = $hapus ? 'succes' : 'failed';
+		header('location: admin.php?pege=kelas&delete='.$info);
+		exit();
+	}
 }
 
-$hapus = hapusdatakls($dlt);

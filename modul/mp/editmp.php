@@ -1,7 +1,4 @@
 <?php
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-	header('location:index.php');
-}
 //edit matapelajaran
 function editmp($data) {
 	global $conn;
@@ -13,16 +10,17 @@ function editmp($data) {
 	$result = mysqli_query($conn, "UPDATE mata_pelajaran SET id_mp='$id_mp', nama_mp='$nama_mp', jurusan_mp='$jurusan_mp' WHERE id_mp='$id_mp' ");
 	return mysqli_affected_rows($conn);
 }
-
-$id_mp = end($_GET); 
-if ($id_mp == null) {
-	header('location: index.php?page=mata_pelajaran');
-	return false;
-}
-$mp = view("SELECT * FROM mata_pelajaran WHERE id_mp='$id_mp'")[0];
+if (isset($_GET['id'])) {
+ 	$id = $_GET['id'];
+	if (is_null($id)) {
+		header('location: index.php?page=mata_pelajaran');
+		return false;
+	}
+ } 
+$mp = view("SELECT * FROM mata_pelajaran WHERE id_mp='$id'")[0];
 
 if (isset($_POST['submit'])) {
-	$editmp = editmp($_POST);
+	$editMP = editmp($_POST);
 }
 ?>
 <main>

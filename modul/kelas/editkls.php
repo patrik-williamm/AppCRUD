@@ -1,9 +1,5 @@
 <?php
 ob_get_contents();
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-	header('location:index.php');
-}
-
 function editkls($data) {
 	global $conn;
 
@@ -22,10 +18,9 @@ $id_fromURL = $_GET['edit'];
 
 	if (isset($_POST['ubah'])) {
 		$editkls = editkls($_POST);
-
-		if ($editkls) {
-			header('location : index.php?page=kelas');
-		}
+		$info = $editkls ? 'succes' : 'failed';
+		header('location : admin.php?page='.$info);
+		exit();
 	}
 ?>
 <main>

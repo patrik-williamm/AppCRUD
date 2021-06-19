@@ -1,8 +1,4 @@
 <?php
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-	header('location:index.php');
-}
-
 //hapus data dari query
 function hapusdata($id) {
 	global $conn;
@@ -10,7 +6,11 @@ function hapusdata($id) {
 	return mysqli_affected_rows($conn);
 }
 
-$id_mp = end($_GET);
-//var_dump($id_mp); die();
+if (isset($_GET['delete'])) {
+	$idDelete = $_GET['delete'];
+	$hapus = hapusdata($idDelete);
+	$info = $hapus ? 'succes' : 'failed';
+	header('location: admin.php?page=mata_pelajaran&edit='.$info);
+	exit();	
+}
 
-$hapus = hapusdata($id_mp);

@@ -1,7 +1,4 @@
 <?php 
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-	header('location:index.php');
-}
 //function tambah data mata pelajaran
 function tambahDataMP($data) {
 	global $conn;
@@ -28,7 +25,12 @@ function tambahDataMP($data) {
 }
 //menanambah data baru
 if (isset($_POST['simpan'])) {
-	$data_mp = tambahDataMP($_POST);
+	$dataMP = tambahDataMP($_POST);
+	if ($dataMP) {
+    echo "<script>
+            alert('Berhasil Ditambahkan');
+      </script>";
+  }
 } 
 ?>
 <main>

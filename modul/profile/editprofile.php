@@ -1,9 +1,11 @@
 <?php 	
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-		exit();
-}
+$email = null;
+if (isset($_SESSION['email'])) {
+  $email = $_SESSION['email'];
 
-$myUser = view("SELECT * FROM users WHERE email='$_SESSION[email]'")[0];
+}
+$myUser = view("SELECT * FROM users WHERE email='$email'")[0];
+
 
 function updateProfile($data) {
   global $conn;
@@ -14,18 +16,11 @@ function updateProfile($data) {
   $status = htmlspecialchars($data['status']);
   $img = upload();
 
-  if (empty($img)) {
+  if (!$img) {
     return false;
   }
 
-  $result = mysqli_query($conn, "UPDATE users SET 
-    id='$id', 
-    img='$img', 
-    nama='$nama', 
-    email='$email', 
-    password ='$password', 
-    status='$status' 
-    WHERE id='$id'");
+  $result = mysqli_query($conn, "UPDATE users SET id='$id', img='$img', nama='$nama', email='$email', password='$password', status='$status' WHERE id='$id'");
 
     return mysqli_affected_rows($conn);
 }
@@ -71,16 +66,14 @@ function upload() {
   move_uploaded_file($tmp_name, $path);
   return $namaBaruImg;
 }
+
 if (isset($_GET['id'])) {
   $idUpdate = $_GET['id'];
 
   if (isset($_POST['submit'])) {
     $myUser = updateProfile($_POST);
-    if (!$myUser) {
-      header('location:admin.php?page=profile');
-    }
-    header('location : admin.php?page=profile');
-
+    header('location:admin.php?page=profile');
+    exit;
   }
 }
 
@@ -94,18 +87,18 @@ if (isset($_GET['id'])) {
           <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $myUser['id'] ?>">
             <div class="form-floating mb-3 col-md-8 offset-md-2">
-              <input type="text" class="form-control" aria-label="Disabled input example" disabled id="nama" name="nama" value="<?= $myUser['nama'] ?>">
+              <input type="text" class="form-control" id="nama" name="nama" value="<?= $myUser['nama'] ?>">
               <label for="nama">Nama User</label>
             </div>
             <div class="form-floating mb-3 col-md-8 offset-md-2">
-              <input type="text" aria-label="Disabled input example" disabled class="form-control" id="email" name="email" value="<?= $myUser['email'] ?>">
+              <input type="text" class="form-control" id="email" name="email" value="<?= $myUser['email'] ?>">
               <label for="email">Email User</label>
             </div>
             <div class="form-floating mb-3 col-md-8 offset-md-2">
               <input type="hidden" class="form-control" id="password" name="password" value="<?= $myUser['password'] ?>">
             </div>
             <div class="form-floating mb-3 col-md-8 offset-md-2">
-              <input type="text" aria-label="Disabled input example" disabled class="form-control" id="status" name="status" value="<?= $myUser['status'] ?>">
+              <input type="text" class="form-control" id="status" name="status" value="<?= $myUser['status'] ?>">
               <label for="status">Status User</label>
             </div>
             <div class="mb-3 col-md-8 offset-md-2">

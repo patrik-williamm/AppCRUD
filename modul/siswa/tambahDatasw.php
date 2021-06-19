@@ -1,7 +1,4 @@
 <?php
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-  header('location:index.php');
-}
 //tambah data siswa
 function tambahDatass($data) {
   global $conn;
@@ -11,10 +8,12 @@ function tambahDatass($data) {
   $nis = htmlspecialchars($data['nis']);
   $kelas = htmlspecialchars($data['kelas']);
 
-  $cek = mysqli_query($conn, "SELECT nama_siswa, nis FROM siswa WHERE nama_siswa='$nama_siswa' and nis='$nis' ");
+  $cek = mysqli_query($conn, "SELECT nis FROM siswa WHERE nis='$nis' ");
   mysqli_fetch_row($cek);
-  if (mysqli_fetch_assoc($cek) > 1) {
-    header('location: admin.php?page=siswa&data=failed');
+  if ($dt = mysqli_fetch_assoc($cek) > 1) {
+    echo "<script>
+            alert('Siswa Dengan NIS Telah terdaftar');
+      </script>";
     return false;
   }
 
@@ -23,26 +22,23 @@ function tambahDatass($data) {
   return mysqli_affected_rows($conn);
 }
 
+$nama_kls = view("SELECT nama_kls FROM kelas");
 if (isset($_POST['submit'])) {
 	$siswa = tambahDatass($_POST);
-
-  if (!$siswa) {
-    header('location:admin.php?page=siswa&data=failed');
+  if ($siswa) {
+    echo "<script>
+            alert('Berhasil Ditambahkan');
+      </script>";
   }
-  header('location:admin.php?page=siswa&data=succes');
-  exit();
 }
-
-$nama_kls = view("SELECT nama_kls FROM kelas");
 ?>
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
     <div class="row">
-		<div class="judul col-md-8 offset-md-2">
-			<h3>Tambah Data Siswa</h3>
-			<hr style="height: 0.4em" width="270px" class="bg-primary">
-		</div>
+  		<div class="judul col-md-8 offset-md-2">
+  			<h3>Tambah Data Siswa</h3>
+  		</div>
        <form action="" method="post">
           <input type="hidden" name="id_siswa">
           <div class="form-floating mb-3 col-md-8 offset-md-2">

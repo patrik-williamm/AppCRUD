@@ -1,8 +1,4 @@
 <?php 
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-	header('location:index.php');
-}
-
 function editgr($data) {
 	global $conn;
 
@@ -23,6 +19,9 @@ $data_gr = view("SELECT * FROM guru WHERE id_guru='$id_fromUrl' ")[0];
 
 if (isset($_POST['ubah'])) {
 	$editgr = editgr($_POST);
+	$info = $editgr ? 'succes' : 'failed';
+	header('location : admin.php?page=guru&edit='.$info);
+	exit();
 ?>
 <main>
   <div class="container py-4">

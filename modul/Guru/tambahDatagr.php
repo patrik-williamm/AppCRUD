@@ -1,10 +1,7 @@
 <?php 
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-	header('location:index.php');
-}
-/*************
-function untuk menambahkan data ke tabel guru
-**************/
+//
+//function untuk menambahkan data ke tabel guru
+//
 function tambahDatagr($data) {
 	global $conn;
 
@@ -32,6 +29,11 @@ function tambahDatagr($data) {
 
 if (isset($_POST['submit'])) {
 	$gurus = tambahDatagr($_POST);
+	if ($siswa) {
+	    echo "<script>
+	            alert('Berhasil Ditambahkan');
+	      </script>";
+  }
 }
 $guru_mp = view("SELECT nama_mp FROM mata_pelajaran ORDER BY nama_mp ASC");
 ?>

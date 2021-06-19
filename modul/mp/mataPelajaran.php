@@ -1,17 +1,14 @@
 <?php
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-  header('location:index.php');
-}
 //menampilkan data matapelajaran
 $matapelajaran = view("SELECT * FROM mata_pelajaran ORDER BY jurusan_mp ASC");
 ?>
 <main>
   <div class="container py-4">
     <div class="p-2 mb-3 bg-light rounded-3">
-      <a href="?page=new_mp" name="datanew" class="text-start btn btn-primary mt-5 mb-3" type="button">New Data</a>
+      <a href="?page=new_mp" name="datanew" class="text-start btn btn-primary mt-5 mb-3" type="button">Tambah Data</a>
       <!-- alert -->
-      <?php if(isset($_GET['data'])): ?>
-        <?php $data = $_GET['data'] ?>
+      <?php if(isset($_GET)): ?>
+        <?php $data = end($_GET) ?>
         <?php if($data == 'succes'): ?>
           <div class="alert alert-primary alert-dismissible fade show" role="alert">
             Data Berhasil Ditambahkan
@@ -20,11 +17,6 @@ $matapelajaran = view("SELECT * FROM mata_pelajaran ORDER BY jurusan_mp ASC");
           <?php elseif($data == 'failed'): ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
               Data Gagal Ditambahkan
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <?php else: ?>
-              <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              selamat datang
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif; ?>

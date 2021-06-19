@@ -1,37 +1,25 @@
-<?php 
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-  header('location:index.php');
-}
-
-$siswa = view("SELECT * FROM siswa order by kelas_siswa DESC LIMIT 20");
-?>
+<?php $siswa = view("SELECT * FROM siswa order by kelas_siswa DESC LIMIT 20") ?>
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
-      <a href="?page=new_sw" class="btn btn-primary mb-2 mt-2" >
-        New File
-      </a>
+      <a href="?page=new_sw" class="btn btn-primary mb-2 mt-2" >Tambah Data</a>
       <!-- alert -->
-      <?php if(isset($_GET['data'])): ?>
-        <?php $data = $_GET['data'] ?>
+       <!-- alert -->
+      <?php if(isset($_GET)): ?>
+        <?php $data = end($_GET) ?>
         <?php if($data == 'succes'): ?>
           <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            Data Berhasil <?= $_GET['page'] ?>
+            Data Berhasil Ditambahkan
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           <?php elseif($data == 'failed'): ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              Data Gagal <?= $_GET['page'] ?>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <?php else: ?>
-              <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              selamat datang
+              Data Gagal Ditambahkan
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif; ?>
       <?php endif; ?>
-      <!-- akhir alert -->      
+      <!-- akhir alert -->     
       <table class="table table-primary table-striped">
       	<tr class="table-primary">
       		<th class="table-primary">ID</th>

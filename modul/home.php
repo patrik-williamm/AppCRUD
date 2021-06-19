@@ -1,8 +1,4 @@
-<?php 	
-if (!$_SESSION['email'] && !$_SESSION['nama']) {
-		exit();
-	} 
-?>
+
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
