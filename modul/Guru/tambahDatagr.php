@@ -35,6 +35,14 @@ if (isset($_POST['submit'])) {
 	      </script>";
   }
 }
+
+if (isset($_POST['batal'])) {
+	echo("<script>
+			confirm('Anda yakin meninggalkan Halaman ini?');
+			location.href = 'admin.php?page=siswa';
+		</script>");
+}
+
 $guru_mp = view("SELECT nama_mp FROM mata_pelajaran ORDER BY nama_mp ASC");
 ?>
 <main>
@@ -87,7 +95,7 @@ $guru_mp = view("SELECT nama_mp FROM mata_pelajaran ORDER BY nama_mp ASC");
 	        	</div>
 	        	<div class="col-md-8 offset-md-2 mb-3">
 	        		<button type="submit" class="btn btn-primary" name="submit">Submit</button> | 
-	        		<button type="reset" class="btn btn-danger" name="batal">Batal</button>
+	        		<button type="cancel" name="batal" class="btn btn-danger" name="batal">Batal</button>
 	        	</div>
 	        </form>	
       	</div>

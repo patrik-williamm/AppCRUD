@@ -14,14 +14,21 @@ function editkls($data) {
 }
 
 $id_fromURL = $_GET['edit'];
-	$v_kelas = view("SELECT * FROM kelas WHERE id_kelas='$id_fromURL'")[0];
+$v_kelas = view("SELECT * FROM kelas WHERE id_kelas='$id_fromURL'")[0];
 
-	if (isset($_POST['ubah'])) {
-		$editkls = editkls($_POST);
-		$info = $editkls ? 'succes' : 'failed';
-		header('location : admin.php?page='.$info);
-		exit();
-	}
+if (isset($_POST['ubah'])) {
+	$editkls = editkls($_POST);
+	$info = $editkls ? 'succes' : 'failed';
+	header('location : admin.php?page='.$info);
+	exit();
+}
+
+if (isset($_POST['batal'])) {
+	echo("<script>
+			confirm('Anda yakin meninggalkan Halaman ini?');
+			location.href = 'admin.php?page=siswa';
+		</script>");
+}
 ?>
 <main>
   <div class="container py-4">
@@ -51,7 +58,7 @@ $id_fromURL = $_GET['edit'];
 				</div>
 				<div class="form-btn mb-3 col-md-8 offset-md-2">
 					<button type="submit" class="btn btn-primary" name="ubah">Submit</button> |
-					<button type="reset" class="btn btn-danger">Batal</button>
+					<button type="cancel" name="batal" class="btn btn-danger">Batal</button>
 				</div>
 	        </form>
       </div>

@@ -1,9 +1,18 @@
-<?php $siswa = view("SELECT * FROM siswa order by kelas_siswa DESC LIMIT 20") ?>
+<?php 
+$siswa = view("SELECT * FROM siswa order by kelas_siswa DESC LIMIT 20");
+$kelas = view("SELECT kls FROM df_kls");
+?>
+<?php 
+  $counts = function($className) {
+    $result = view("SELECT kelas_siswa FROM siswa WHERE kelas_siswa='$className'");
+    return count($result);
+  }
+?>
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
       <a href="?page=new_sw" class="btn btn-primary mb-2 mt-2" >Tambah Data</a>
-      <!-- alert -->
+      <a href="" class="mb-2 mt-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">View Jumlah Siswa</a>
        <!-- alert -->
       <?php if(isset($_GET)): ?>
         <?php $data = end($_GET) ?>
@@ -46,3 +55,27 @@
     </div>
   </div>
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Jumlah Siswa Perkelas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ol class="list-group list-group-numbered">
+          <?php foreach($kelas as $kls): ?>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold"><?= $kls['kls'] ?></div>
+            </div>
+            <span class="badge bg-primary rounded-pill"><?= $counts($kls['kls'])?> SISWA</span>
+          </li>
+          <?php endforeach; ?>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

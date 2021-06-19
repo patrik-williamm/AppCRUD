@@ -25,48 +25,6 @@ function updateProfile($data) {
     return mysqli_affected_rows($conn);
 }
 
-function upload() {
-  
-  $nameImg = $_FILES['img']['name'];
-  $sizeImg = $_FILES['img']['size'];
-  $err = $_FILES['img']['error'];
-  $tmp_name = $_FILES['img']['tmp_name'];
-
-  if ($err == 4) {
-    echo "<script>
-            alert('error img!!!');
-          </script>";
-    return false;
-  }
-
-  if ($sizeImg > 1000000) {
-    echo "<script>
-            alert('Ukuran img terlalu besar!!!');
-          </script>";
-    return false;
-  }
-  $typeValid = ['jpg', 'jpeg', 'png'];
-  $type = explode('.', $nameImg);
-  $type = strtolower(end($type));
-
-  if (!in_array($type, $typeValid)) {
-    echo "<script>
-            alert('type img tidak ditemukan!!');
-          </script>";
-    return false;
-  }
-
-  //generate nama baru
-  $namaBaruImg = uniqid();
-  $namaBaruImg .= '.';
-  $namaBaruImg .= $type;
-  
-  //location file
-  $path = "file/$namaBaruImg";
-  move_uploaded_file($tmp_name, $path);
-  return $namaBaruImg;
-}
-
 if (isset($_GET['id'])) {
   $idUpdate = $_GET['id'];
 
@@ -75,6 +33,14 @@ if (isset($_GET['id'])) {
     header('location:admin.php?page=profile');
     exit;
   }
+}
+
+if (isset($_POST['batal'])) {
+    echo("<script>
+        confirm('Anda yakin meninggalkan Halaman ini?');
+        location.href = 'admin.php?page=profile';
+      </script>");
+    return false;
 }
 
 ?>
@@ -107,7 +73,7 @@ if (isset($_GET['id'])) {
             </div>
             <div class="mb-3 col-md-8 offset-md-2">
              <button type="submit" name="submit" class="btn btn-outline-primary">Update</button> |
-             <button type="reset" name="reset" class="btn btn-outline-danger">Batal</button>
+             <button type="cancel" name="batal" class="btn btn-outline-danger">Batal</button>
             </div>
           </form>
         </div>

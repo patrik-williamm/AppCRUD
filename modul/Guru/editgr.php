@@ -22,6 +22,13 @@ if (isset($_POST['ubah'])) {
 	$info = $editgr ? 'succes' : 'failed';
 	header('location : admin.php?page=guru&edit='.$info);
 	exit();
+}
+if (isset($_POST['batal'])) {
+	echo("<script>
+			confirm('Anda yakin meninggalkan Halaman ini?');
+			location.href = 'admin.php?page=siswa';
+		</script>");
+}
 ?>
 <main>
   <div class="container py-4">
@@ -57,7 +64,7 @@ if (isset($_POST['ubah'])) {
 				</div>
 				<div class="form-btn mb-3 col-md-8 offset-md-2">
 					<button type="submit" class="btn btn-primary" name="ubah">Ubah</button> |
-					<button type="reset" class="btn btn-danger">Batal</button>
+					<button type="cancel" name="batal" class="btn btn-danger">Batal</button>
 				</div>
 	       </form>
       	</div>
