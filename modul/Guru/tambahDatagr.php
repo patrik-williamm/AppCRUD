@@ -29,11 +29,16 @@ function tambahDatagr($data) {
 
 if (isset($_POST['submit'])) {
 	$gurus = tambahDatagr($_POST);
-	if ($siswa) {
-	    echo "<script>
-	            alert('Berhasil Ditambahkan');
-	      </script>";
-  }
+	switch ($gurus) {
+		case true:
+		    echo "<script>
+		            alert('Berhasil Ditambahkan');
+		      </script>";
+			break;
+		default:
+			$jaj;
+			break;
+	}
 }
 
 if (isset($_POST['batal'])) {
@@ -52,7 +57,6 @@ $guru_mp = view("SELECT nama_mp FROM mata_pelajaran ORDER BY nama_mp ASC");
       	<div class="row">
       		<div class="col-md-8 offset-md-2">
       			<h3>Tambah Data Guru</h3>
-      			<hr style="height: 0.5em" width="240px" class="bg-primary">
       		</div>	
 	        <form action="" method="post">
 	        	<div class="col-md-8 offset-md-2 mb-3">

@@ -1,4 +1,4 @@
-<?php 
+<?php
 function editgr($data) {
 	global $conn;
 
@@ -14,20 +14,37 @@ function editgr($data) {
 	return mysqli_affected_rows($conn);
 }
  
-$id_fromUrl = end($_GET);
-$data_gr = view("SELECT * FROM guru WHERE id_guru='$id_fromUrl' ")[0];
+if (isset($_GET['edit'])) {
+	$edit = 0;
+	$edit = $_GET['edit'];
+	$data_gr = view("SELECT * FROM guru WHERE id_guru='$edit'");
 
-if (isset($_POST['ubah'])) {
-	$editgr = editgr($_POST);
-	$info = $editgr ? 'succes' : 'failed';
-	header('location : admin.php?page=guru&edit='.$info);
+	if (empty($data_gr)) {
+		echo("<script>
+			alert('Data dengan id tidak ditemukan');
+			location.href = 'admin.php?page=siswa';
+		</script>");
+		return false;
+	}else{
+		$data_gr = view("SELECT * FROM guru WHERE id_guru='$edit' ")[0];
+		if (isset($_POST['ubah'])) {
+			$editgr = editgr($_POST);
+			$info = $editgr ? 'succes' : 'failed';
+			header('location : admin.php?page=guru&edit='.$info);
+			exit();
+		}
+	}	
+}else{
+	header('location : admin.php?page=guru');
 	exit();
 }
+
 if (isset($_POST['batal'])) {
 	echo("<script>
 			confirm('Anda yakin meninggalkan Halaman ini?');
 			location.href = 'admin.php?page=siswa';
 		</script>");
+	return false;
 }
 ?>
 <main>

@@ -6,13 +6,13 @@ function hapusdatagr($id) {
 }
 if (isset($_GET['delete'])) {
 	$idGuru = $_GET['delete'];
-	$hapus = hapusdatagr($id_gr);
+	$hapus = hapusdatagr($idGuru);
 	if ($hapus) {
 		echo "<script>
 				confirm('Anda Yakin?');
 			</script>";
 		$info = $hapus ? 'succes' : 'failed';
-		header('location: admin.php?pege=kelas&delete='.$info);
+		header('location: admin.php?page=guru&status='.$info);
 		exit();
 	}
 	

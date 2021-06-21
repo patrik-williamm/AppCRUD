@@ -1,5 +1,5 @@
 <?php
-ob_start();
+ob_get_contents();
 function hapusdatakls($id) {
 	global $conn;
 	$result = mysqli_query($conn, "DELETE FROM kelas WHERE id_kelas='$id'");

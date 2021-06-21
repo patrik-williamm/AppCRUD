@@ -13,21 +13,28 @@ function editkls($data) {
 	return mysqli_affected_rows($conn);
 }
 
-$id_fromURL = $_GET['edit'];
-$v_kelas = view("SELECT * FROM kelas WHERE id_kelas='$id_fromURL'")[0];
+if (isset($_GET['edit']) && isset($_GET['page'])) {
+	$id_fromURL = filter_var($_GET['edit'], FILTER_SANITIZE_URL);
+	$v_kelas = view("SELECT * FROM kelas WHERE id_kelas='$id_fromURL'")[0];
 
-if (isset($_POST['ubah'])) {
-	$editkls = editkls($_POST);
-	$info = $editkls ? 'succes' : 'failed';
-	header('location : admin.php?page='.$info);
+	if (isset($_POST['ubah'])) {
+		$editkls = editkls($_POST);
+		$info = $editkls ? 'succes' : 'failed';
+		header('location : admin.php?page='.$info);
+		exit();
+	}
+}else{
+	header('location: admin.php?page=kelas');
 	exit();
 }
+
 
 if (isset($_POST['batal'])) {
 	echo("<script>
 			confirm('Anda yakin meninggalkan Halaman ini?');
 			location.href = 'admin.php?page=siswa';
 		</script>");
+	return false;
 }
 ?>
 <main>

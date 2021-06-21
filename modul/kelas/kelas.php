@@ -1,6 +1,5 @@
-<?php 
-$kelas = view("SELECT * FROM kelas ORDER BY nama_kls ASC"); 
-?>
+<?php ob_get_contents(); ?>
+<?php $kelas = view("SELECT * FROM kelas ORDER BY nama_kls ASC") ?>
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">
