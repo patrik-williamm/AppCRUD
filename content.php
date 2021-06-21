@@ -58,10 +58,10 @@ if (isset($_GET['page'])) {
 			require_once 'modul/profile/editprofile.php';
 			break;
 		default:
-			require_once 'modul/home.php';
+			require_once 'modul/home/home.php';
 			break;
 	}
 }else {
-	require_once 'modul/home.php';
+	require_once 'modul/home/home.php';
 }
 
