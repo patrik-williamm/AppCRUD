@@ -1,12 +1,11 @@
 <?php
 require_once 'config/Config.php';
-
-/**************
-function untuk pendaftran user baru
-**************/
+if (isset($_SESSION['submit'])) {
+  header('location: admin.php');
+  exit();
+}
 function register($data) {
 	global $conn;
-
 	$id = htmlspecialchars($data['id']);
 	$nama = htmlspecialchars($data['nama']);
 	$email = stripcslashes($data['email']);
@@ -17,19 +16,28 @@ function register($data) {
 	$emailUser = mysqli_query($conn, "SELECT email FROM users WHERE email='$email'");
 	
 	if ($user = mysqli_fetch_assoc($emailUser) > 1) {
+		echo "<script>
+				alert('Email telah digunakan');
+			</script>";
 		return false;
 	}
 
-	if ($password != $konfirmasiPassword) {
+	if ($password !== $konfirmasiPassword) {
+		echo "<script>
+				alert('konfirmasi Password uiui');
+			</script>";
 		return false;
 	}
 
 	if (empty($password) && empty($email)) {
+		echo "<script>
+				alert('Password / email kosong');
+			</script>";
 		return false;
 	}
 
 	//generate password
-	$password = password_hash($password, PASSWORD_DEFAULT);
+	$password = password_hash($password, PASSWORD_ARGON2ID);
 	$result = mysqli_query($conn, "INSERT INTO users VALUES( '', 'images.jpg','$nama', '$email', '$password', 'user' )");
 
 	return mysqli_affected_rows($conn);
