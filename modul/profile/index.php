@@ -8,7 +8,7 @@
               <img src="<?= BASEURL ?>/file/<?= $my['img'] ?>" class="rounded-circle" width="210" height="210" alt="images">
           </div>
           <div class="col-md-8 offset-md-3">
-            <p class="mt-4 fw-bold text-center">
+            <p class="mt-4 fw-bold">
               <?= $my['nama'] ?> |
               <?= $my['email'] ?> |
               <?= $my['status'] ?> 
