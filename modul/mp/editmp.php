@@ -10,18 +10,26 @@ function editmp($data) {
 	$result = mysqli_query($conn, "UPDATE mata_pelajaran SET id_mp='$id_mp', nama_mp='$nama_mp', jurusan_mp='$jurusan_mp' WHERE id_mp='$id_mp' ");
 	return mysqli_affected_rows($conn);
 }
-if (isset($_GET['id'])) {
- 	$id = $_GET['id'];
-	if (is_null($id)) {
-		header('location: index.php?page=mata_pelajaran');
+if (isset($_GET['edit'])) {
+ 	$edit = filter_var($_GET['edit'], FILTER_SANITIZE_URL);
+ 	$mp = view("SELECT * FROM mata_pelajaran WHERE id_mp='$edit'");
+	if (empty($mp)) {
+		echo("<script>
+			alert('Data dengan id tidak ditemukan');
+			location.href = 'admin.php?page=mp';
+		</script>");
 		return false;
 	}
- } 
-$mp = view("SELECT * FROM mata_pelajaran WHERE id_mp='$id'")[0];
 
-if (isset($_POST['submit'])) {
-	$editMP = editmp($_POST);
-}
+	$mp = view("SELECT * FROM mata_pelajaran WHERE id_mp='$edit'")[0];
+	if (isset($_POST['submit'])) {
+		$editMP = editmp($_POST);
+	}
+ }else{
+ 	header('location : admin.php?page=mp');
+ 	exit;
+ } 
+
 ?>
 <main>
   <div class="container py-4">
