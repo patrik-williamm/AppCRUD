@@ -29,14 +29,9 @@ if (isset($_GET['edit'])) {
 		header('location : admin.php?page=siswa');
 		exit();
 	}
-
-	if (isset($_POST['batal'])) {
-		echo("<script>
-				confirm('Anda yakin meninggalkan Halaman ini?');
-				location.href = 'admin.php?page=siswa';
-			</script>");
-		return false;
-	}
+}else{
+	header('location:admin.php?page=siswa');
+	exit();
 }
 
 if (isset($_POST['batal'])) {
