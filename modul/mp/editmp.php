@@ -1,5 +1,4 @@
 <?php
-//edit matapelajaran
 function editmp($data) {
 	global $conn;
 
@@ -10,7 +9,7 @@ function editmp($data) {
 	$result = mysqli_query($conn, "UPDATE mata_pelajaran SET id_mp='$id_mp', nama_mp='$nama_mp', jurusan_mp='$jurusan_mp' WHERE id_mp='$id_mp' ");
 	return mysqli_affected_rows($conn);
 }
-if (isset($_GET['edit'])) {
+if (isset($_GET['edit']) && isset($_GET['page'])) {
  	$edit = filter_var($_GET['edit'], FILTER_SANITIZE_URL);
  	$mp = view("SELECT * FROM mata_pelajaran WHERE id_mp='$edit'");
 	if (empty($mp)) {
