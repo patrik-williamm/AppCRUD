@@ -32,6 +32,9 @@ if (isset($_GET['id'])) {
     header('location:admin.php?page=profile');
     exit;
   }
+}else{
+  header('location: admin.php?page=profile');
+  exit();
 }
 
 if (isset($_POST['batal'])) {
@@ -63,7 +66,7 @@ if (isset($_POST['batal'])) {
               <input type="hidden" class="form-control" id="password" name="password" value="<?= $myUser['password'] ?>">
             </div>
             <div class="form-floating mb-3 col-md-8 offset-md-2">
-/@              <input type="text" class="form-control" id="status" name="status" value="<?= $myUser['status'] ?>">
+             <input type="text" class="form-control" id="status" name="status" value="<?= $myUser['status'] ?>">
               <label for="status">Status User</label>
             </div>
             <div class="mb-3 col-md-8 offset-md-2">
