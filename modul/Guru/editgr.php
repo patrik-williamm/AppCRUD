@@ -14,7 +14,7 @@ function editgr($data) {
 	return mysqli_affected_rows($conn);
 }
  
-if (isset($_GET['edit'])) {
+if (isset($_GET['edit']) && isset($_GET['page'])) {
 	$edit = 0;
 	$edit = $_GET['edit'];
 	$data_gr = view("SELECT * FROM guru WHERE id_guru='$edit'");

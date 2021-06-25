@@ -1,6 +1,4 @@
-<?php 
-	$my = view("SELECT * FROM users WHERE email='$_SESSION[email]'")[0];
-?>
+<?php $my = view("SELECT * FROM users WHERE email='$_SESSION[email]'")[0] ?>
 <main>
   <div class="container py-4">
     <div class="p-5 mb-4 bg-light rounded-3">

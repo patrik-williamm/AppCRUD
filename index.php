@@ -16,6 +16,7 @@ if (isset($_COOKIE["keyid"]) && isset($_COOKIE["key"])) {
 
 if (isset($_SESSION['submit'])) {
   header('location: admin.php');
+  exit();
 }
 
 if (isset($_POST['submit'])) {
@@ -27,17 +28,18 @@ if (isset($_POST['submit'])) {
 	mysqli_num_rows($emailUser);
 	if ($dt = mysqli_fetch_assoc($emailUser)) {
 		if (password_verify($password, $dt['password'])) {
-	       $_SESSION['submit'] = true;
+	     $_SESSION['submit'] = true;
 		   $_SESSION['email'] = $dt['email'];
-	       $_SESSION['nama'] = $dt['nama'];
+	     $_SESSION['nama'] = $dt['nama'];
 	     
-	       //setcookie id dan nama dari user
-	       if (isset($_POST['remember'])) {
-	         setcookie("keyid", $dt['id'], time()+360000);
-	         setcookie("setkey", hash("haval160,4",$dt['nama']), time()+360000);  
-	       }
+       //setcookie id dan nama dari user
+       if (isset($_POST['remember'])) {
+         setcookie("keyid", $dt['id'], time()+360000);
+         setcookie("setkey", hash("haval160,4",$dt['nama']), time()+360000);  
+       }
 
-	      header('location: admin.php');
+	     header('location: admin.php');
+       exit;
 		}
 	}
   $error=true;

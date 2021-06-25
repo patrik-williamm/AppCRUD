@@ -2,6 +2,7 @@
 
 if (!$_SESSION['email'] && !$_SESSION['nama']) {
 	header('location:index.php');
+	
 }
 
 require_once 'config/Config.php';

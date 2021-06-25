@@ -11,22 +11,29 @@ function editsw($data) {
 	return mysqli_affected_rows($conn);	
 }
 
-$id_fromUrl = end($_GET);
-$v_siswa = view("SELECT * FROM siswa WHERE id_siswa='$id_fromUrl'")[0];
+if (isset($_GET['edit'])) {
+	$edit = filter_var($_GET['edit'], FILTER_SANITIZE_URL);
+	$v_siswa = view("SELECT * FROM siswa WHERE id_siswa='$edit'");
+	if (empty($v_siswa)) {
+		echo("<script>
+			alert('Data dengan id tidak ditemukan');
+			location.href = 'admin.php?page=siswa';
+		</script>");
+		return false;
+	}
 
-if (isset($_POST['ubah'])) {
-	$editsw = editsw($_POST);
-	$info = $editsw ? 'succes' : 'failed';
-	header('location : admin.php?page=siswa');
+	$v_siswa = view("SELECT * FROM siswa WHERE id_siswa='$edit'")[0];
+	if (isset($_POST['ubah'])) {
+		$editsw = editsw($_POST);
+		$info = $editsw ? 'succes' : 'failed';
+		header('location : admin.php?page=siswa');
+		exit();
+	}
+}else{
+	header('location:admin.php?page=siswa');
 	exit();
 }
 
-if (isset($_POST['batal'])) {
-	echo("<script>
-			confirm('Anda yakin meninggalkan Halaman ini?');
-			location.href = 'admin.php?page=siswa';
-		</script>");
-}
 if (isset($_POST['batal'])) {
 	echo("<script>
 			confirm('Anda yakin meninggalkan Halaman ini?');

@@ -14,14 +14,22 @@ function editkls($data) {
 }
 
 if (isset($_GET['edit']) && isset($_GET['page'])) {
-	$id_fromURL = filter_var($_GET['edit'], FILTER_SANITIZE_URL);
-	$v_kelas = view("SELECT * FROM kelas WHERE id_kelas='$id_fromURL'")[0];
-
-	if (isset($_POST['ubah'])) {
-		$editkls = editkls($_POST);
-		$info = $editkls ? 'succes' : 'failed';
-		header('location : admin.php?page='.$info);
-		exit();
+	$edit = filter_var($_GET['edit'], FILTER_SANITIZE_URL);
+	$v_kelas = view("SELECT * FROM kelas WHERE id_kelas='$edit'");
+	if (empty($v_kelas)) {
+		echo("<script>
+			alert('Data dengan id tidak ditemukan');
+			location.href = 'admin.php?page=kelas';
+		</script>");
+		return false;
+	}else{
+		$v_kelas = view("SELECT * FROM kelas WHERE id_kelas='$edit'")[0];
+		if (isset($_POST['ubah'])) {
+			$editkls = editkls($_POST);
+			$info = $editkls ? 'succes' : 'failed';
+			header('location : admin.php?page='.$info);
+			exit();
+		}
 	}
 }else{
 	header('location: admin.php?page=kelas');
